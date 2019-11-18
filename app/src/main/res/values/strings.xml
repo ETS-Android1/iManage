@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">iManage</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="no_account">Does not have account ?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+<string-array name="available_expenses">
+    <item>choose your expense category </item>
+    <item>Sport and Leisure</item>
+    <item>Make ups</item>
+    <item>Food and Restaurants </item>
+    <item>Clothes</item>
+    <item>Transportation</item>
+    <item>Passion </item>
+    <item>Domestic Materials</item>
+    <item>Others</item>
+
+</string-array>
+</resources>

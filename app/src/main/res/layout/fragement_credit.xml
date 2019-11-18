@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/relative"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <EditText
+        android:id="@+id/creditedAmount"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:inputType="number"
+        android:hint="10000" />
+    <EditText
+        android:id="@+id/creditFrom"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:inputType="textPersonName"
+        android:hint="felix"
+        android:layout_below="@+id/creditedAmount"/>
+    <EditText
+        android:id="@+id/creditorPhone"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:inputType="phone"
+        android:hint="078300000000"
+        android:layout_below="@+id/creditFrom"/>
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="2"
+        android:layout_below="@+id/creditorPhone">
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:hint="date"
+            android:clickable="true"
+            android:id="@+id/timeToPay"/>
+        <ImageView
+            android:id="@+id/dateIcon"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_date"
+            />
+    </GridLayout>
+
+
+    <Button
+        android:layout_margin="15dp"
+        android:layout_width="100dp"
+        android:id="@+id/saveDebit"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:background="@drawable/rounded_button"
+        android:text="Save debit"
+        android:layout_below="@+id/grid"/>
+
+
+
+</RelativeLayout>

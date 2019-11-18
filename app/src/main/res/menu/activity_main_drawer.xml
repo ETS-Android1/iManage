@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_raise_pocket"
+            android:icon="@drawable/ic_add"
+            android:title="Raise Pocket" />
+        <item
+            android:id="@+id/nav_expense"
+            android:icon="@drawable/ic_remove"
+            android:title="Expense" />
+        <item
+            android:id="@+id/nav_transaction"
+            android:icon="@drawable/ic_cross"
+            android:title="Transaction" />
+    </group>
+
+    <item android:title="Loans">
+        <menu>
+            <item
+                android:id="@+id/nav_debit"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Debit" />
+            <item
+                android:id="@+id/nav_credit"
+                android:icon="@drawable/ic_return"
+                android:title="Credit" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_close"
+                android:title="Exit" />
+        </menu>
+    </item>
+
+</menu>
