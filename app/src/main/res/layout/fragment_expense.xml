@@ -5,7 +5,7 @@
     android:padding="20dp">
     <EditText
         android:id="@+id/takenMoney"
-        android:layout_width="150dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:inputType="number"
@@ -18,12 +18,26 @@
         android:id="@+id/expenseReason">
     </Spinner>
 
+    <EditText
+        android:id="@+id/detail"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:inputType="textImeMultiLine"
+        android:layout_below="@+id/expenseReason"
+        android:hint="soap" />
+
     <Button
         android:layout_margin="20dp"
         android:layout_width="100dp"
-       android:layout_below="@+id/expenseReason"
+        android:layout_below="@+id/detail"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_button"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="Confirm"/>
+        android:textColor="#fff"
+        android:id="@+id/saveBtn"
+        android:text="Disburse"/>
+
 
 </RelativeLayout>
