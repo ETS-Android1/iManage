@@ -25,7 +25,6 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         View view = inflater.inflate(R.layout.fragment_expense, container,false);
 
 
-
        return  view;
        }
 
@@ -54,6 +53,10 @@ try {
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    public void setExpense()
+    {
 
     }
 }
