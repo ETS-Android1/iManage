@@ -24,6 +24,9 @@ import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,30 +59,31 @@ public class RaisePocketFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     EditText amountTxt = getView().findViewById(R.id.newMoney);
-                    final String amountEtxt = (amountTxt.getText().toString());
+                    final String amountEtxt = amountTxt.getText().toString();
                     if(TextUtils.isEmpty(amountEtxt)){
                         amountTxt.setError("Fund can not be empty");
                         return;
                     }
-                    int amount = Integer.parseInt(amountEtxt);
-                    int sum=0;
 
-                    String  balance = SharedUserData.getInstance(getActivity().getApplicationContext()).getBalance();
-                    sum = Integer.parseInt(balance) + amount;
-
-
-                    //Toast.makeText(getActivity(), "new Pocket"+sum, Toast.LENGTH_SHORT).show();
-                    final int finalSum = sum;
                     StringRequest sr= new StringRequest(Request.Method.POST, Constants.RAISE_POCKET_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+
+                            try {
+                                JSONObject jo = new JSONObject(response);
+                                if(jo.getBoolean("error") ==false){
+                                    Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                          Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(getActivity(),"failed",Toast.LENGTH_SHORT).show();
                         }
                     }) {
                         @Override
@@ -87,7 +91,7 @@ public class RaisePocketFragment extends Fragment {
                             Map<String,String> params = new HashMap<>();
                             params.put("user_id",SharedUserData.getInstance(getActivity().getApplicationContext()).getUserId());
                             params.put("Deposited_amount",amountEtxt);
-                            params.put("balance", String.valueOf(finalSum));
+
                             return params;
                         }
                     };
@@ -98,6 +102,7 @@ public class RaisePocketFragment extends Fragment {
             });
         }catch (Exception e){
             Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+
         }
 
 
