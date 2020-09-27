@@ -47,6 +47,7 @@ public class User extends AppCompatActivity {
         mPhone = findViewById(R.id.mobilePhone);
         error = findViewById(R.id.errors);
         createBtn = findViewById(R.id.signUpBtn);
+        error = findViewById(R.id.errors);
 
         requestQueue = Volley.newRequestQueue(User.this);
         pd = new ProgressDialog(User.this);
@@ -77,7 +78,7 @@ public class User extends AppCompatActivity {
             isValid=false;
         }
         if(pass1.matches(pass2)) {
-            Toast.makeText(this,"Passwords Does not Match",Toast.LENGTH_SHORT).show();
+           Toast.makeText(this,"Passwords Does not Match",Toast.LENGTH_SHORT).show();
 
         }
         return isValid;
@@ -100,9 +101,9 @@ public class User extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
                             pd.setMessage(jo.getString("message"));
                             pd.show();
-//                            if(!jo.getBoolean("error")){
-//                                startActivity(new Intent(getApplicationContext(),Login.class));
-//                            }
+                            if(!jo.getBoolean("error")){
+                                startActivity(new Intent(getApplicationContext(),Login.class));
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
