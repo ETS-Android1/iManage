@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
 
                             if(jsonObject.getBoolean("error")) {
-                                Toast.makeText(getApplicationContext(), "Found an error:" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
 
                             } else if(!jsonObject.getBoolean("error")) {
                                     JSONObject userObject = jsonObject.getJSONObject("user");

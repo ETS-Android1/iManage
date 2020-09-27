@@ -27,19 +27,19 @@ import java.util.Map;
 
 
 public class User extends AppCompatActivity {
-    private EditText username, password1, matchPassword, initAmount, mPhone;
+    private EditText username, password1, matchPassword, initAmount, mPhone, email;
     private TextView error;
     private Button createBtn;
     RequestQueue requestQueue;
     ProgressDialog pd;
 
-     private String userName, pass1, pass2, phone, balance;
+     private String userName, pass1, pass2, phone, balance,uEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
+        email = findViewById(R.id.email);
         username = findViewById(R.id.username);
         password1 = findViewById(R.id.pass1);
         matchPassword = findViewById(R.id.pass2);
@@ -54,13 +54,14 @@ public class User extends AppCompatActivity {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                uEmail = email.getText().toString();
                 userName = username.getText().toString();
                 pass1 = password1.getText().toString();
                 pass2 = matchPassword.getText().toString();
                 phone = mPhone.getText().toString();
                 balance = initAmount.getText().toString();
-               if(validateInputs(userName, pass1, pass2, phone) == true){
-                   signUp(userName,pass1,phone,balance);
+               if(validateInputs(uEmail, userName, pass1, pass2, phone)){
+                   signUp(uEmail,userName, pass1,pass2, phone, balance);
                }
 
             }
@@ -68,30 +69,28 @@ public class User extends AppCompatActivity {
 
     }
 
-    private boolean validateInputs(String userName, String pass1, String pass2, String phone) {
+    private boolean validateInputs(String email, String userName, String pass1, String pass2, String phone) {
         boolean isValid=true;
-        if (userName.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || phone.isEmpty()) {
+        if (userName.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || phone.isEmpty() || email.isEmpty()) {
 
             Toast.makeText(getApplicationContext(), "Please fill Required information", Toast.LENGTH_SHORT).show();
             isValid=false;
         }
-        if(pass1 == pass2) {
+        if(pass1.matches(pass2)) {
             Toast.makeText(this,"Passwords Does not Match",Toast.LENGTH_SHORT).show();
 
-        } else {
-            matchPassword.setText("Passwords Does not Match");
         }
         return isValid;
 
 
     }
 
-    public void signUp(final String uName, final String uPassword, final String uPhone,final String uBalance) {
+    public void signUp(final String uEmail, final String uName, final String uPassword, final String pass2,  final String uPhone,final String uBalance) {
 
             pd.setMessage("Please wait ...");
             pd.show();
 
-        StringRequest sr = new StringRequest(Request.Method.POST, Constants.ACC_CREATE_URL,
+        StringRequest sr = new StringRequest(Request.Method.POST, Constants.USER_REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -99,9 +98,11 @@ public class User extends AppCompatActivity {
                         try {
                             JSONObject jo = new JSONObject(response);
                             Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
-                            if(jo.getBoolean("error") ==false){
-                                startActivity(new Intent(getApplicationContext(),Login.class));
-                            }
+                            pd.setMessage(jo.getString("message"));
+                            pd.show();
+//                            if(!jo.getBoolean("error")){
+//                                startActivity(new Intent(getApplicationContext(),Login.class));
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -110,7 +111,7 @@ public class User extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 pd.dismiss();
-                Toast.makeText(User.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),""+ error.getMessage(), Toast.LENGTH_LONG).show();
                 error.printStackTrace();
 
             }
@@ -118,10 +119,11 @@ public class User extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-
-                params.put("email", uName);
+                params.put("name", uName);
+                params.put("email", uEmail);
                 params.put("phone", uPhone);
                 params.put("password", uPassword);
+                params.put("password_confirmation", pass2);
                 params.put("balance", uBalance);
 
                 return params;
