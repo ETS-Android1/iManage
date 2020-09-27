@@ -75,14 +75,14 @@ public class User extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please fill Required information", Toast.LENGTH_SHORT).show();
             isValid=false;
         }
-        return isValid;
-      /*  if(pass1 == pass2)
-        {
-            Toast.makeText(getApplicationContext(),"Passwords Does not Match",Toast.LENGTH_SHORT).show();
+        if(pass1 == pass2) {
+            Toast.makeText(this,"Passwords Does not Match",Toast.LENGTH_SHORT).show();
 
         } else {
             matchPassword.setText("Passwords Does not Match");
-        }*/
+        }
+        return isValid;
+
 
     }
 
@@ -111,6 +111,7 @@ public class User extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 pd.dismiss();
                 Toast.makeText(User.this, error.toString(), Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
 
             }
         }) {
@@ -118,7 +119,7 @@ public class User extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("username", uName);
+                params.put("email", uName);
                 params.put("phone", uPhone);
                 params.put("password", uPassword);
                 params.put("balance", uBalance);
