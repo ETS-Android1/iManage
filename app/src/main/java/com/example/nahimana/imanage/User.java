@@ -131,6 +131,7 @@ public class User extends AppCompatActivity {
             }
         };
          RequestHandler.getInstance(this).addToRequestQueue(sr);
+
     }
 
 }
