@@ -12,6 +12,7 @@ public class SharedUserData {
     private static final String KEY_USER_ID = "userId";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_BALANCE = "balance";
+    private static final String KEY_TOKEN = "token";
 
     private SharedUserData(Context context){
         mContext = context;
@@ -22,7 +23,7 @@ public class SharedUserData {
     }
     return userInstance;
 }
-public boolean userLogin(String user_id, String username,String phone, String balance){
+public boolean userLogin(String user_id, String username,String phone, String balance, String token){
     SharedPreferences sp = mContext.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sp.edit();
 
@@ -30,6 +31,7 @@ public boolean userLogin(String user_id, String username,String phone, String ba
     editor.putString(KEY_USERNAME, username);
     editor.putString(KEY_PHONE, phone);
     editor.putString(KEY_BALANCE, balance);
+    editor.putString(KEY_TOKEN, token);
     editor.apply();
     return  true;
 }
@@ -67,7 +69,10 @@ public String getUsername()
         SharedPreferences sp = mContext.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
         return sp.getString(KEY_BALANCE,null);
     }
-
+    public String getToken() {
+        SharedPreferences sp = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return  sp.getString(KEY_TOKEN,null);
+    }
 
 
 }

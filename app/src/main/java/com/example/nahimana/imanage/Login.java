@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,7 +42,7 @@ public class Login extends AppCompatActivity {
         signBn = findViewById(R.id.signIpBtn);
 
         pd = new ProgressDialog(this);
-        pd.setMessage("Authenticating Please wait...");
+       pd.setMessage("Authenticating Please wait...");
 
         signBn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,43 +55,46 @@ public class Login extends AppCompatActivity {
                 StringRequest sr = new StringRequest(Request.Method.POST, Constants.LOGIN_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         pd.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
-                            if(jsonObject.getBoolean("error") == true) {
-                                Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            if(jsonObject.getBoolean("error")) {
+                                Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
 
-                            } else if(jsonObject.getBoolean("error")== false) {
-                                SharedUserData.getInstance(getApplicationContext()).userLogin(
-                                        jsonObject.getString("user_id"),
-                                        jsonObject.getString("username"),
-                                        jsonObject.getString("phone"),
-                                        jsonObject.getString("balance")
+                            } else if(!jsonObject.getBoolean("error")) {
+                                    JSONObject userObject = jsonObject.getJSONObject("user");
+                                    Toast.makeText(getApplicationContext(),""+ userObject.getString("email"),Toast.LENGTH_LONG).show();
+
+                                 SharedUserData.getInstance(getApplicationContext()).userLogin(
+                                        userObject.getString("id"),
+                                        userObject.getString("email"),
+                                        userObject.getString("phone"),
+                                        userObject.getString("balance"),
+                                        jsonObject.getString("token")
                                 );
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
                             }
+
 
                         } catch (JSONException e){
                             e.printStackTrace();
                         }
-
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         pd.dismiss();
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"volley is receiving an error"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
                     }
                 }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-
-                        params.put("username", userName);
+                        params.put("email", userName);
                         params.put("password",passWord);
 
                         return params;
@@ -101,8 +106,8 @@ public class Login extends AppCompatActivity {
     }
     public void goToRegister(View v)
     {
-        startActivity(new Intent(this,User.class));
+        startActivity(new Intent(this, User.class));
     }
 
-
 }
+
