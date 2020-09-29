@@ -98,7 +98,7 @@ public void createDebit(){
 
             try {
                 JSONObject jo = new JSONObject(response);
-                Toast.makeText(getContext(),jo.getString("message"), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_LONG).show();
 
 
             } catch (JSONException e) {
