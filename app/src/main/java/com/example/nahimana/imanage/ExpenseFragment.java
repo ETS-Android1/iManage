@@ -32,7 +32,6 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
      public EditText etxAmount, etxDescription;
      public Spinner spCategory;
-     public String  description, category, amount;
      Button btnExpense;
 
     @Nullable

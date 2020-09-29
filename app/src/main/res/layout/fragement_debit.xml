@@ -2,9 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relative"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_margin="20dp"
+    android:layout_gravity="center"
+    tools:context=".DebitFragment">
 
     <EditText
         android:id="@+id/debitedAmount"
@@ -12,36 +15,37 @@
         android:layout_height="50dp"
         android:layout_margin="15dp"
         android:inputType="number"
-        android:hint="10000" />
+        android:hint="10000$" />
     <EditText
-        android:id="@+id/debitTo"
+        android:id="@+id/debtor"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_margin="15dp"
         android:inputType="textPersonName"
-        android:hint="felix"
+        android:hint="John Doe"
         android:layout_below="@+id/debitedAmount"/>
     <EditText
-        android:id="@+id/creditorPhone"
+        android:id="@+id/debtorPhone"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_margin="15dp"
         android:inputType="phone"
         android:hint="078300000000"
-        android:layout_below="@+id/debitTo"/>
+        android:layout_below="@+id/debtor"/>
     <GridLayout
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="1"
         android:columnCount="2"
-        android:layout_below="@id/creditorPhone">
+        android:layout_below="@id/debtorPhone">
         <EditText
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_margin="15dp"
             android:hint="date"
-            android:clickable="true"
+            android:inputType="datetime"
+            android:clickable="false"
             android:id="@+id/timeToReturn"/>
         <ImageView
             android:id="@+id/CalenderIcon"
@@ -60,7 +64,7 @@
         android:background="@drawable/rounded_button"
         android:textColor="#fff"
         android:textAllCaps="false"
-        android:text="Save credit"
+        android:text="Save Debit"
         android:layout_below="@+id/grid"/>
 
 
