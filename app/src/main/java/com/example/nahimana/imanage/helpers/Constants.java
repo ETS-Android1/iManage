@@ -7,8 +7,13 @@ public class Constants {
     public static final String ROOT_URL="http://192.168.43.29/api/";
     public static final String USER_REGISTER_URL=ROOT_URL+"users";
     public static final String LOGIN_URL = ROOT_URL+"auth/user";
+
     public static final String RAISE_POCKET_URL = ROOT_URL+"Controller/ActionsHandler.php";
     public static final String EXPENSE_CREATE_URL = ROOT_URL+"expenses";
+
+    public static final String DEBIT_URL = ROOT_URL+"debits";
+
+
 
 
 
