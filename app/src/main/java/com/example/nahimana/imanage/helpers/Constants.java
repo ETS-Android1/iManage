@@ -12,6 +12,7 @@ public class Constants {
     public static final String EXPENSE_CREATE_URL = ROOT_URL+"expenses";
 
     public static final String DEBIT_URL = ROOT_URL+"debits";
+    public static final String CREDIT_URL = ROOT_URL+"credits";
 
 
 
