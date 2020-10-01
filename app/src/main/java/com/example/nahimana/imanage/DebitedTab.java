@@ -1,5 +1,6 @@
 package com.example.nahimana.imanage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,7 @@ public class DebitedTab extends Fragment {
         private RecyclerView recyclerView;
         private RecyclerView.Adapter adapter;
         private List<ListDebits> listDebits;
+        private Context context;
 
     public DebitedTab() {
         // Required empty public constructor
@@ -45,7 +47,10 @@ public class DebitedTab extends Fragment {
         View view = inflater.inflate(R.layout.recyclerview, container, false);
              recyclerView = view.findViewById(R.id.recyclerView);
              recyclerView.setHasFixedSize(true);
-             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+             recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+             listDebits = new ArrayList<>();
+             loadDebitsFromApi();
 
         return view;
     }
@@ -53,8 +58,7 @@ public class DebitedTab extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listDebits = new ArrayList<>();
-        loadDebitsFromApi();
+
 
     }
     public void loadDebitsFromApi(){
@@ -65,21 +69,20 @@ public class DebitedTab extends Fragment {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray debits = jsonObject.getJSONArray("debits");
-                    //Toast.makeText(getContext(), debits.length(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "" + debits.length(), Toast.LENGTH_LONG).show();
 
                     for (int i=0; i< debits.length(); i++) {
 
                         JSONObject jo = debits.getJSONObject(i);
-                        ListDebits ld = new ListDebits();
-
-                        ld.setNames(jo.getString("debitor"));
-                        ld.setPhone(jo.getString("phone"));
-                        ld.setAmount(jo.getString("amount"));
-                        ld.setDueDate(jo.getString("created_at"));
-                        ld.setPaymentDate(jo.getString("timeToPay"));
+                        ListDebits ld = new ListDebits(
+                            jo.getString("debitor"),
+                            jo.getString("phone"),
+                            jo.getString("amount"),
+                            jo.getString("timeToPay"),
+                            jo.getString("created_at"));
 
                         listDebits.add(ld);
-                        adapter = new RecyclerAdapter(listDebits, getContext());
+                        adapter = new RecyclerAdapter(listDebits, context);
                         recyclerView.setAdapter(adapter);
                     }
                 } catch (JSONException e) {
