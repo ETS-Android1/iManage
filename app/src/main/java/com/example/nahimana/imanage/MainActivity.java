@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //tabs
-/*        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+       TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         ViewPager viewPager = findViewById(R.id.viewTab);
 
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager); */
+        tabLayout.setupWithViewPager(viewPager);
 
         drawer = findViewById(R.id.drawer_layout);
 
