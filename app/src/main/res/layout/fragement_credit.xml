@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/relative"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     android:layout_gravity="center">
 
     <EditText
@@ -14,12 +15,12 @@
         android:inputType="number"
         android:hint="10000" />
     <EditText
-        android:id="@+id/creditFrom"
+        android:id="@+id/creditor"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_margin="15dp"
         android:inputType="textPersonName"
-        android:hint="felix"
+        android:hint="John Doe"
         android:layout_below="@+id/creditedAmount"/>
     <EditText
         android:id="@+id/creditorPhone"
@@ -28,7 +29,7 @@
         android:layout_margin="15dp"
         android:inputType="phone"
         android:hint="078300000000"
-        android:layout_below="@+id/creditFrom"/>
+        android:layout_below="@+id/creditor"/>
     <GridLayout
         android:id="@+id/grid"
         android:layout_width="match_parent"
@@ -40,8 +41,8 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_margin="15dp"
-            android:hint="date"
-            android:clickable="true"
+            android:hint="xxxx-xx-xx xx-xx-xx"
+            android:clickable="false"
             android:id="@+id/timeToPay"/>
         <ImageView
             android:id="@+id/dateIcon"
@@ -55,14 +56,13 @@
     <Button
         android:layout_margin="15dp"
         android:layout_width="100dp"
-        android:id="@+id/saveDebit"
+        android:id="@+id/saveCredit"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:background="@drawable/rounded_button"
         android:text="Save debit"
         android:layout_below="@+id/grid"/>
-
 
 
 </RelativeLayout>
