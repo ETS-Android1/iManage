@@ -122,12 +122,14 @@ public void createDebit(){
             params.put("phone", debtorPhone.getText().toString());
             params.put("timeToPay",dateField.getText().toString());
             params.put("user_id", SharedUserData.getInstance(getContext()).getUserId());
-            params.put("token",SharedUserData.getInstance(getContext()).getToken());
-
-
             return params;
-
-        };
+        }
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap();
+                headers.put("Authorization", "Bearer " + SharedUserData.getInstance(getContext()).getToken());
+                return headers;
+            }
     };
     RequestHandler.getInstance(getContext()).addToRequestQueue(sr);
 }

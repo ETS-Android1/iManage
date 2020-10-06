@@ -23,4 +23,15 @@
     <item>Others</item>
 
 </string-array>
+
+    <string name="amount">Amount</string>
+    <string name="phone">Phone</string>
+    <string name="timeToPay">Payment Date</string>
+    <string name="dueDate">Due Date</string>
+    <string name="GiverNames">Names</string>
+
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+
+
 </resources>

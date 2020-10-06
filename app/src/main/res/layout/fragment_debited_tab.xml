@@ -2,54 +2,110 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="25dp"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/colorAccent"
     tools:context=".DebitedTab">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/debitedCV"
+        >
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/debitedCV"
-            >
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/debitLayout">
+                android:layout_margin="16dp"
+                >
+                <TextView
+                    android:text="@string/GiverNames"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:id="@+id/Giver"
+                    />
                 <TextView
                     android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/debtorNames"
+                    android:layout_toRightOf="@+id/Giver"
+                    />
+
+                <TextView
+                    android:id="@+id/phoneLabel"
+                    android:text="@string/phone"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_below="@+id/Giver"
                     />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/debtorPhone"
+                    android:layout_below="@+id/debtorNames"
+                    android:layout_toRightOf="@+id/phoneLabel"
                     android:text=""
                     />
+
+                <TextView
+                    android:id="@+id/labelAmount"
+                    android:text="@string/amount"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_below="@+id/debtorPhone"
+                    />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/debtorAmount"
                     android:text=""
+                    android:layout_toRightOf="@id/labelAmount"
+                    android:layout_below="@+id/debtorPhone"
+                    />
+
+                <TextView
+                    android:id="@+id/labelDueDate"
+                    android:text="@string/dueDate"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_below="@+id/debtorAmount"
                     />
                 <TextView
                     android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/dueDate"
+                    android:layout_toRightOf="@+id/labelDueDate"
+                    android:layout_below="@id/debtorAmount"
+                    />
+
+                <TextView
+                    android:id="@+id/labelPayment"
+                    android:text="@string/timeToPay"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_below="@+id/dueDate"
                     />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/paymentDate"
+                    android:layout_toRightOf="@id/labelPayment"
+                    android:layout_below="@id/dueDate"
                     />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
+
+    </android.support.v7.widget.CardView>
+
 
 
 </FrameLayout>

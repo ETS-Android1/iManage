@@ -38,7 +38,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.dueDate.setText(listDebit.getDueDate());
         viewHolder.paymentDate.setText(listDebit.getPaymentDate());
         viewHolder.amount.setText(listDebit.getAmount());
-        //viewHolder.cardView.setRadius(16);
+        viewHolder.cardView.setRadius(16);
 
     }
 
@@ -49,7 +49,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
 
     public class DebitViewHolder extends RecyclerView.ViewHolder {
         public TextView names, phone, dueDate, paymentDate,amount;
-        public LinearLayout linearLayout;
         public CardView cardView;
 
         public DebitViewHolder(@NonNull View itemView) {
@@ -59,7 +58,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             dueDate = itemView.findViewById(R.id.dueDate);
             paymentDate = itemView.findViewById(R.id.paymentDate);
             amount = itemView.findViewById(R.id.debtorAmount);
-            linearLayout = itemView.findViewById(R.id.debitLayout);
+
             cardView = itemView.findViewById(R.id.debitedCV);
         }
 
