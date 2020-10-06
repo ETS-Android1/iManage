@@ -2,13 +2,103 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     tools:context=".SpentTab">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <android.support.v7.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/expenseCV"
+        >
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="16dp">
 
+             <TextView
+                 android:text="Expense_id"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="4dp"
+                 android:id="@+id/expenseIdLabel"
+                 />
+             <TextView
+                 android:text=""
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/expenseId"
+                 android:layout_toRightOf="@id/expenseIdLabel"
+                 />
+
+             <TextView
+                 android:text="@string/category"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="4dp"
+                 android:id="@+id/expenseCategoryLabel"
+                 android:layout_below="@+id/expenseId"
+                 />
+             <TextView
+                 android:text=""
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/expenseCategory"
+                 android:layout_toRightOf="@id/expenseCategoryLabel"
+                 android:layout_below="@+id/expenseId"
+                 />
+
+             <TextView
+                 android:text="@string/description"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="4dp"
+                 android:id="@+id/expenseDescriptionLabel"
+                 android:layout_below="@+id/expenseCategory"
+                 />
+             <TextView
+                 android:text=""
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/expenseDescription"
+                 android:layout_toRightOf="@id/expenseDescriptionLabel"
+                 android:layout_below="@+id/expenseCategory"
+                 />
+             <TextView
+                 android:text="@string/amount"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="4dp"
+                 android:id="@+id/expenseAmountLabel"
+                 android:layout_below="@+id/expenseDescription"
+                 />
+             <TextView
+                 android:text=""
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/expenseAmount"
+                 android:layout_toRightOf="@id/expenseDescriptionLabel"
+                 android:layout_below="@+id/expenseDescription"
+                 />
+             <TextView
+                 android:text="@string/dueDate"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="4dp"
+                 android:id="@+id/expenseDateLabel"
+                 android:layout_below="@+id/expenseAmount"
+                 />
+             <TextView
+                 android:text=""
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/expenseDate"
+                 android:layout_toRightOf="@id/expenseDateLabel"
+                 android:layout_below="@+id/expenseAmount"
+                 />
+
+
+         </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 </FrameLayout>

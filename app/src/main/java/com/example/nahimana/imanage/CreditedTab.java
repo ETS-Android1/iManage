@@ -66,20 +66,16 @@ public class CreditedTab extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
                     try {
-                        if(response == null) {
-                            Toast.makeText(context,"No credit",Toast.LENGTH_LONG).show();
-                            return;
-                        }
+
                         for(int i=0; i<response.length(); i++) {
                             JSONObject jo = response.getJSONObject(i);
-
                             ListCredits lc = new ListCredits(
                                 jo.getString("id"),
                                 jo.getString("creditor"),
                                 jo.getString("phone"),
                                 jo.getString("amount"),
                                 jo.getString("timeToPay"),
-                                jo.getString("created_at")
+                                jo.getString("date")
                             );
                             listCredits.add(lc);
                             adapter = new CreditAdapter(context, listCredits);

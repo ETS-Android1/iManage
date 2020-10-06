@@ -34,7 +34,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
         ListCredits listCredit = listCredits.get(index);
         cvh.creditAmount.setText(listCredit.getAmount());
         cvh.creditId.setText(listCredit.get_id());
-        cvh.creditor.setText(listCredit.getCreditor());
+        cvh.creditorName.setText(listCredit.getCreditor());
         cvh.creditorPhone.setText(listCredit.getCreditorPhone());
         cvh.creditDueDate.setText(listCredit.getDueDate());
         cvh.creditPaymentDate.setText(listCredit.getPaymentDate());
@@ -48,12 +48,12 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
     }
 
     public class CreditViewHolder extends RecyclerView.ViewHolder {
-        public TextView creditId, creditor, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount;
+        public TextView creditId, creditorName, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount;
 
         public CreditViewHolder(@NonNull View itemView) {
             super(itemView);
             creditId = itemView.findViewById(R.id.creditId);
-            creditor = itemView.findViewById(R.id.creditor);
+            creditorName = itemView.findViewById(R.id.creditorName);
             creditAmount = itemView.findViewById(R.id.creditAmount);
             creditDueDate = itemView.findViewById(R.id.creditDueDate);
             creditPaymentDate = itemView.findViewById(R.id.creditPaymentDate);
