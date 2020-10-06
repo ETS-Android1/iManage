@@ -14,10 +14,12 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
+import com.example.nahimana.imanage.helpers.SharedUserData;
 import com.example.nahimana.imanage.model.ListDebits;
 
 import org.json.JSONArray;
@@ -25,7 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,23 +67,19 @@ public class DebitedTab extends Fragment {
     }
     public void loadDebitsFromApi(){
 
-        StringRequest sr = new StringRequest(Request.Method.GET, Constants.DEBIT_URL, new Response.Listener<String>() {
+        JsonArrayRequest jar = new JsonArrayRequest( Constants.DEBIT_URL, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONArray response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray debits = jsonObject.getJSONArray("debits");
-                    Toast.makeText(getContext(), "" + debits.length(), Toast.LENGTH_LONG).show();
+                    for (int i=0; i< response.length(); i++) {
 
-                    for (int i=0; i< debits.length(); i++) {
-
-                        JSONObject jo = debits.getJSONObject(i);
+                        JSONObject jo = response.getJSONObject(i);
                         ListDebits ld = new ListDebits(
                             jo.getString("debitor"),
                             jo.getString("phone"),
                             jo.getString("amount"),
                             jo.getString("timeToPay"),
-                            jo.getString("created_at"));
+                            jo.getString("date"));
 
                         listDebits.add(ld);
                         adapter = new RecyclerAdapter(listDebits, context);
@@ -94,8 +94,16 @@ public class DebitedTab extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        });
-        RequestHandler.getInstance(getContext()).addToRequestQueue(sr);
+        }){
+                @Override
+                public Map<String, String> getHeaders(){
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer  "+SharedUserData.getInstance(context).getToken());
+                return headers;
+
+            }
+        };
+        RequestHandler.getInstance(getContext()).addToRequestQueue(jar);
     }
 
 }

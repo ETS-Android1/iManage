@@ -1,13 +1,13 @@
 package com.example.nahimana.imanage.model;
 
 public class ListExpenses {
-        private int _id;
+        private String _id;
         private String category;
         private String description;
-        private int amount;
+        private String amount;
         private String date;
 
-    public ListExpenses(int _id, String category, String description, int amount, String date) {
+    public ListExpenses(String _id, String category, String description, String amount, String date) {
         this._id = _id;
         this.category = category;
         this.description = description;
@@ -15,7 +15,7 @@ public class ListExpenses {
         this.date = date;
     }
 
-    public int get_id() {
+    public String getId() {
         return _id;
     }
 
@@ -27,7 +27,7 @@ public class ListExpenses {
         return description;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 

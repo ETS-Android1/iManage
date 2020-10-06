@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -85,7 +86,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
     public void storeExpense()
     {
-        StringRequest sr = new StringRequest(Request.Method.POST, Constants.EXPENSE_CREATE_URL, new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.POST, Constants.EXPENSE_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -112,6 +113,12 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
               params.put("token", SharedUserData.getInstance(getContext()).getToken());
               return  params;
           }
+            @Override
+            public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap();
+                    headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getContext()).getToken());
+                    return headers;
+            };
         };
         RequestHandler.getInstance(getContext()).addToRequestQueue(sr);
     }
