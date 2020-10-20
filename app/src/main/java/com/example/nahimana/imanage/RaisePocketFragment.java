@@ -65,15 +65,14 @@ public class RaisePocketFragment extends Fragment {
                         return;
                     }
 
-                    StringRequest sr= new StringRequest(Request.Method.POST, Constants.RAISE_POCKET_URL, new Response.Listener<String>() {
+                    StringRequest sr= new StringRequest(Request.Method.POST, Constants.DEPOSIT_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
                             try {
                                 JSONObject jo = new JSONObject(response);
-                                if(jo.getBoolean("error") ==false){
-                                    Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
-                                }
+                                Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -83,18 +82,27 @@ public class RaisePocketFragment extends Fragment {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            Toast.makeText(getActivity(),"failed",Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
                         }
-                    }) {
+                    })
+                    {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams()  {
                             Map<String,String> params = new HashMap<>();
-                            params.put("user_id",SharedUserData.getInstance(getActivity().getApplicationContext()).getUserId());
-                            params.put("Deposited_amount",amountEtxt);
+                            params.put("amount",amountEtxt);
+                            params.put("user_id", SharedUserData.getInstance(getContext()).getUserId());
 
                             return params;
                         }
+
+                        @Override
+                        public Map<String, String> getHeaders() {
+                            HashMap<String, String> headers = new HashMap();
+                            headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getContext()).getToken());
+                            return headers;
+                        }
                     };
+
                    RequestHandler.getInstance(getActivity().getApplicationContext()).addToRequestQueue(sr);
 
 
