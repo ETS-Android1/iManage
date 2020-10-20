@@ -11,13 +11,16 @@
         android:layout_margin="20dp"
         android:inputType="number"
         android:hint="10000" />
+
     <Button
-        android:layout_margin="20dp"
         android:id="@+id/saveNewMoney"
         android:layout_width="100dp"
-        android:layout_toRightOf="@+id/newMoney"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Add it !"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/newMoney"
+        android:text="Income"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

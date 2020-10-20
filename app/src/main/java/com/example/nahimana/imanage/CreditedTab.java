@@ -94,7 +94,7 @@ public class CreditedTab extends Fragment {
             @Override
             public Map<String, String> getHeaders(){
                 HashMap<String, String> headers = new HashMap();
-                headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getContext()).getToken());
+                headers.put("Authorization", "Bearer "+ SharedUserData.getInstance(getContext()).getToken());
                 return headers;
             };
         };

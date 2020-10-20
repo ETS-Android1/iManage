@@ -101,6 +101,37 @@
                     android:layout_below="@id/dueDate"
                     />
 
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="@string/dpp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/debited_payments"
+                    android:layout_below="@id/paymentDate"
+                    />
+                <TextView
+                    android:id="@+id/labelPaid"
+                    android:text="................."
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_below="@+id/debited_payments"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/payDebitAmount"
+                    android:layout_toRightOf="@id/labelPayment"
+                    android:layout_below="@id/debited_payments"
+                    android:drawableRight="@drawable/ic_add"
+                    android:background="@drawable/ic_pay_debt"
+                    />
+
+
+
             </RelativeLayout>
 
 
