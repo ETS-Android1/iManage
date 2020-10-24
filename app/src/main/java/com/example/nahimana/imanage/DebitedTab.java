@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.nahimana.imanage.helpers.Constants;
+import com.example.nahimana.imanage.helpers.Payment;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
@@ -40,6 +43,8 @@ public class DebitedTab extends Fragment {
         private RecyclerView.Adapter adapter;
         private List<ListDebits> listDebits;
         private Context context;
+        private Button payDebitBtn;
+        EditText amount;
 
     public DebitedTab() {
         // Required empty public constructor
@@ -52,16 +57,16 @@ public class DebitedTab extends Fragment {
              recyclerView = view.findViewById(R.id.recyclerView);
              recyclerView.setHasFixedSize(true);
              recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
              listDebits = new ArrayList<>();
              loadDebitsFromApi();
-
-        return view;
+             return view;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
 
     }
@@ -79,7 +84,10 @@ public class DebitedTab extends Fragment {
                             jo.getString("phone"),
                             jo.getString("amount"),
                             jo.getString("timeToPay"),
-                            jo.getString("date"));
+                            jo.getString("date"),
+                            jo.getString("payedAmount"),
+                            jo.getString("remainingDays")
+                        );
 
                         listDebits.add(ld);
                         adapter = new RecyclerAdapter(listDebits, context);

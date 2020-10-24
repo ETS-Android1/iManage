@@ -89,7 +89,7 @@ public class RaisePocketFragment extends Fragment {
                         @Override
                         protected Map<String, String> getParams()  {
                             Map<String,String> params = new HashMap<>();
-                            params.put("amount",amountEtxt);
+                            params.put("amount", amountEtxt);
                             params.put("user_id", SharedUserData.getInstance(getContext()).getUserId());
 
                             return params;
@@ -116,11 +116,6 @@ public class RaisePocketFragment extends Fragment {
 
 
     }
-    private void raisePocket(){
 
-//        SharedUserData.getInstance(this).getBalance()+amount;
-
-
-    }
 
 }

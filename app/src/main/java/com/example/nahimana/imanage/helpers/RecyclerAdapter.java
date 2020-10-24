@@ -7,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nahimana.imanage.R;
 import com.example.nahimana.imanage.model.ListDebits;
@@ -38,8 +41,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.dueDate.setText(listDebit.getDueDate());
         viewHolder.paymentDate.setText(listDebit.getPaymentDate());
         viewHolder.amount.setText(listDebit.getAmount());
+        viewHolder.payedAmount.setText("Current Payment: " + listDebit.getPayedAmount());
+        viewHolder.remainingDays.setText(listDebit.getRemainingDays());
         viewHolder.cardView.setRadius(16);
+        viewHolder.cardView.setClickable(true);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Pay button clicked", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+     /* final  String payDebitAmount =  viewHolder.payDebitAmount.getText().toString();
+      final String payDebitId = viewHolder.debitId.getText().toString(); */
     }
 
     @Override
@@ -48,19 +63,32 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     }
 
     public class DebitViewHolder extends RecyclerView.ViewHolder {
-        public TextView names, phone, dueDate, paymentDate,amount;
+        public TextView debitId, names, phone, dueDate, paymentDate,amount,payedAmount, remainingDays;
+        public EditText payDebitAmount;
         public CardView cardView;
+        Button payDebitBtn;
 
         public DebitViewHolder(@NonNull View itemView) {
             super(itemView);
+            debitId = itemView.findViewById(R.id.payDebitId);
             names = itemView.findViewById(R.id.debtorNames);
             phone = itemView.findViewById(R.id.debtorPhone);
             dueDate = itemView.findViewById(R.id.dueDate);
             paymentDate = itemView.findViewById(R.id.paymentDate);
             amount = itemView.findViewById(R.id.debtorAmount);
-
+            payedAmount = itemView.findViewById(R.id.labelPaid);
+            remainingDays = itemView.findViewById(R.id.remainingDayz);
             cardView = itemView.findViewById(R.id.debitedCV);
+            payDebitAmount = itemView.findViewById(R.id.payDebitAmount);
+
+           /* payDebitBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Pay button clicked", Toast.LENGTH_SHORT).show();
+                }
+            });*/
         }
+
 
     }
 }

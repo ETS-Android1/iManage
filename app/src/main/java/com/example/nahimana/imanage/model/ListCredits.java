@@ -7,14 +7,18 @@ public class ListCredits {
     private String amount;
     private String paymentDate;
     private String dueDate;
+    private String payedAmount;
+    private  String remainingDays;
 
-    public ListCredits(String _id, String creditor, String creditorPhone, String amount, String paymentDate, String dueDate) {
+    public ListCredits(String _id, String creditor, String creditorPhone, String amount, String paymentDate, String dueDate, String payedAmount, String remainingDays) {
         this._id = _id;
         this.creditor = creditor;
         this.creditorPhone = creditorPhone;
         this.amount = amount;
         this.paymentDate = paymentDate;
         this.dueDate = dueDate;
+        this.payedAmount = payedAmount;
+        this.remainingDays = remainingDays;
     }
 
     public String get_id() {
@@ -40,4 +44,13 @@ public class ListCredits {
     public String getDueDate() {
         return dueDate;
     }
+
+    public String getPayedAmount() {
+        return payedAmount;
+    }
+
+    public String getRemainingDays() {
+        return remainingDays;
+    }
 }
+

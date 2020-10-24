@@ -38,7 +38,8 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
         cvh.creditorPhone.setText(listCredit.getCreditorPhone());
         cvh.creditDueDate.setText(listCredit.getDueDate());
         cvh.creditPaymentDate.setText(listCredit.getPaymentDate());
-        cvh.payedAmount.setText("Example: 80$/700$");
+        cvh.payedAmount.setText("CurrentPayment: "+listCredit.getPayedAmount());
+        cvh.remainingDays.setText(listCredit.getRemainingDays());
 
     }
 
@@ -48,7 +49,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
     }
 
     public class CreditViewHolder extends RecyclerView.ViewHolder {
-        public TextView creditId, creditorName, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount;
+        public TextView creditId, creditorName, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount, remainingDays;
 
         public CreditViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +60,8 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
             creditPaymentDate = itemView.findViewById(R.id.creditPaymentDate);
             creditorPhone = itemView.findViewById(R.id.creditorPhone);
             payedAmount = itemView.findViewById(R.id.payedAmount);
+            remainingDays = itemView.findViewById(R.id.remainingDays);
+
 
 
         }

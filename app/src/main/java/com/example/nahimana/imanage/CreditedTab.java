@@ -75,7 +75,9 @@ public class CreditedTab extends Fragment {
                                 jo.getString("phone"),
                                 jo.getString("amount"),
                                 jo.getString("timeToPay"),
-                                jo.getString("date")
+                                jo.getString("date"),
+                                jo.getString("payedAmount"),
+                                jo.getString("remainingDays")
                             );
                             listCredits.add(lc);
                             adapter = new CreditAdapter(context, listCredits);

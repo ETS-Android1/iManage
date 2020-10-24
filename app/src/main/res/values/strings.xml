@@ -33,6 +33,7 @@
     <string name="category">Category</string>
     <string name="description">Description</string>
     <string name="dpp">Debit Payment Progress</string>
+    <string name="cpp">Credit Payment Progress</string>
 
 
 </resources>
