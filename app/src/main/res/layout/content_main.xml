@@ -11,12 +11,14 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewTab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="auto"
         app:layout_editor_absoluteX="8dp"
         app:layout_editor_absoluteY="8dp">
 

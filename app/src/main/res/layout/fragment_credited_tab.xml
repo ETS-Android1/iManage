@@ -158,14 +158,18 @@
                 android:layout_below="@+id/creditedPaymentTitle"
                 android:layout_toRightOf="@id/payedAmount"
                 />
+
             <EditText
-                android:textSize="16dp"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
                 android:id="@+id/payCreditAmount"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
                 android:layout_below="@+id/remainingDays"
-                />
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_edit_text"
+
+                android:textSize="16dp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -10,4 +10,5 @@
         android:id="@+id/action_signOut"
         android:title="SignOut"
         />
+
 </menu>

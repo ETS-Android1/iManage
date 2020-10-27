@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.nahimana.imanage.helpers.Constants;
+import com.example.nahimana.imanage.helpers.OnItemClickListener;
 import com.example.nahimana.imanage.helpers.Payment;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
@@ -40,7 +41,8 @@ import java.util.Map;
 public class DebitedTab extends Fragment {
 
         private RecyclerView recyclerView;
-        private RecyclerView.Adapter adapter;
+        private RecyclerAdapter adapter;
+
         private List<ListDebits> listDebits;
         private Context context;
         private Button payDebitBtn;
@@ -48,7 +50,6 @@ public class DebitedTab extends Fragment {
 
     public DebitedTab() {
         // Required empty public constructor
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,9 +66,6 @@ public class DebitedTab extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
 
     }
     public void loadDebitsFromApi(){
@@ -88,11 +86,17 @@ public class DebitedTab extends Fragment {
                             jo.getString("payedAmount"),
                             jo.getString("remainingDays")
                         );
-
                         listDebits.add(ld);
                         adapter = new RecyclerAdapter(listDebits, context);
                         recyclerView.setAdapter(adapter);
                     }
+                    adapter.setOnclickListener(new OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            changeItemText(position, "Clicked");
+                        }
+                    });
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -112,6 +116,12 @@ public class DebitedTab extends Fragment {
             }
         };
         RequestHandler.getInstance(getContext()).addToRequestQueue(jar);
+    }
+
+    public void changeItemText(int position, String text) {
+        listDebits.get(position).changeName(text);
+        adapter.notifyItemChanged(position);
+
     }
 
 }

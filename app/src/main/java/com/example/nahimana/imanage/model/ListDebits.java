@@ -1,5 +1,8 @@
 package com.example.nahimana.imanage.model;
 
+import android.content.Context;
+import android.widget.Toast;
+
 public class ListDebits {
     private String Names;
     private String phone;
@@ -44,5 +47,8 @@ public class ListDebits {
 
     public String getRemainingDays() {
         return remainingDays;
+    }
+    public void changeName(String text) {
+        this.Names = text;
     }
 }

@@ -10,6 +10,7 @@
     <color name="colorDanger">#d9534f</color>
     <color name="colorWarning">#f4cc33</color>
     <color name="colorSuccess">#2fb390</color>
+    <color name="bgLight">#ece4dc</color>
 
 
 </resources>

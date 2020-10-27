@@ -45,13 +45,17 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edit_text"
             android:hint="Names" />
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:hint="Email"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_edit_text"
+
+            />
         <EditText
             android:id="@+id/mobilePhone"
             android:layout_width="match_parent"
@@ -60,7 +64,10 @@
             android:layout_marginTop="5dp"
             android:hint="07800000000"
             android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_edit_text"
+
+            />
         <EditText
             android:id="@+id/pass1"
             android:layout_width="match_parent"
@@ -69,7 +76,9 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_edit_text"
+            />
         <EditText
             android:id="@+id/pass2"
             android:layout_width="match_parent"
@@ -78,7 +87,9 @@
             android:layout_marginTop="5dp"
             android:hint="Confirm password"
             android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_edit_text"
+            />
 
 
         <EditText
@@ -89,7 +100,9 @@
             android:layout_marginTop="5dp"
             android:hint="Initial Amount"
             android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_edit_text"
+            />
         <Button
             android:id="@+id/signUpBtn"
             android:layout_width="match_parent"

@@ -20,6 +20,7 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitViewHolder> {
     private List<ListDebits> listDebits;
     private Context context;
+    public OnItemClickListener mListener;
 
     public RecyclerAdapter(List<ListDebits> listDebits, Context context) {
         this.listDebits = listDebits;
@@ -30,11 +31,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     @Override
     public DebitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_debited_tab, parent, false);
-        return new DebitViewHolder(v);
+        return new DebitViewHolder(v, mListener);
     }
-
     @Override
-    public void onBindViewHolder(@NonNull DebitViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull DebitViewHolder viewHolder, final int position) {
         final ListDebits listDebit = listDebits.get(position);
         viewHolder.names.setText(listDebit.getNames());
         viewHolder.phone.setText(listDebit.getPhone());
@@ -45,30 +45,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.remainingDays.setText(listDebit.getRemainingDays());
         viewHolder.cardView.setRadius(16);
         viewHolder.cardView.setClickable(true);
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Pay button clicked", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-     /* final  String payDebitAmount =  viewHolder.payDebitAmount.getText().toString();
-      final String payDebitId = viewHolder.debitId.getText().toString(); */
     }
-
     @Override
     public int getItemCount() {
         return listDebits.size();
     }
-
-    public class DebitViewHolder extends RecyclerView.ViewHolder {
+    public void  setOnclickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
+    public static class DebitViewHolder extends RecyclerView.ViewHolder {
         public TextView debitId, names, phone, dueDate, paymentDate,amount,payedAmount, remainingDays;
         public EditText payDebitAmount;
         public CardView cardView;
+        public View container;
         Button payDebitBtn;
 
-        public DebitViewHolder(@NonNull View itemView) {
+        public DebitViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             debitId = itemView.findViewById(R.id.payDebitId);
             names = itemView.findViewById(R.id.debtorNames);
@@ -81,14 +73,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             cardView = itemView.findViewById(R.id.debitedCV);
             payDebitAmount = itemView.findViewById(R.id.payDebitAmount);
 
-           /* payDebitBtn.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "Pay button clicked", Toast.LENGTH_SHORT).show();
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
                 }
-            });*/
+            });
+
         }
-
-
     }
 }

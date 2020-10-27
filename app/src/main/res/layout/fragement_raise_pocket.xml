@@ -2,25 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/relative"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="8dp">
 
     <EditText
         android:id="@+id/newMoney"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:inputType="number"
-        android:hint="10000" />
+        android:background="@drawable/rounded_edit_text"
+        android:hint="10000"
+        android:inputType="number">
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/saveNewMoney"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@+id/newMoney"
-        android:text="Income"
+        android:layout_toEndOf="@+id/newMoney"
+        android:layout_marginLeft="8dp"
+        android:textColor="#fff"
+        android:background="@drawable/rounded_button"
+        android:text="Deposit"
         android:textAllCaps="false" />
 
 </RelativeLayout>
