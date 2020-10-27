@@ -9,22 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nahimana.imanage.R;
 import com.example.nahimana.imanage.model.ListDebits;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitViewHolder> implements Filterable {
     private List<ListDebits> listDebits;
+    private List<ListDebits> debitsFullList;
     private Context context;
     public OnItemClickListener mListener;
 
     public RecyclerAdapter(List<ListDebits> listDebits, Context context) {
         this.listDebits = listDebits;
         this.context = context;
+        debitsFullList = new ArrayList<>(listDebits);
     }
 
     @NonNull
@@ -86,5 +90,37 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             });
 
         }
+
     }
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ListDebits> filteredList = new ArrayList<>();
+            if(constraint.toString().isEmpty()) {
+                filteredList.addAll(debitsFullList);
+            } else  {
+                String filteredPattern = constraint.toString().toLowerCase().trim();
+                for(ListDebits debit: debitsFullList) {
+                    if(debit.getPhone().toUpperCase().contains(filteredPattern)) {
+                        filteredList.add(debit);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+         listDebits.clear();
+         listDebits.addAll((List) results.values);
+         notifyDataSetChanged();
+        }
+    };
 }

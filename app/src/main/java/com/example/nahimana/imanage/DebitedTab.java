@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -66,6 +71,7 @@ public class DebitedTab extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
     }
     public void loadDebitsFromApi(){
@@ -78,7 +84,7 @@ public class DebitedTab extends Fragment {
 
                         JSONObject jo = response.getJSONObject(i);
                         ListDebits ld = new ListDebits(
-                            jo.getString("debitor"),
+                            jo.getString("names"),
                             jo.getString("phone"),
                             jo.getString("amount"),
                             jo.getString("timeToPay"),
@@ -90,12 +96,6 @@ public class DebitedTab extends Fragment {
                         adapter = new RecyclerAdapter(listDebits, context);
                         recyclerView.setAdapter(adapter);
                     }
-                    adapter.setOnclickListener(new OnItemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
-                            changeItemText(position, "Clicked");
-                        }
-                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -118,10 +118,27 @@ public class DebitedTab extends Fragment {
         RequestHandler.getInstance(getContext()).addToRequestQueue(jar);
     }
 
-    public void changeItemText(int position, String text) {
-        listDebits.get(position).changeName(text);
-        adapter.notifyItemChanged(position);
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //
+        inflater.inflate(R.menu.main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_FLAG_FORCE_ASCII);
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+       super.onCreateOptionsMenu(menu, inflater);
     }
 
 }

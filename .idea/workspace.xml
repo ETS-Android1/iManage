@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -21,8 +21,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/DebitedTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/DebitedTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/RecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/RecyclerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/model/ListDebits.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/model/ListDebits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,10 +161,10 @@
     </state>
     <state x="320" y="75" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1602525092880" />
     <state x="320" y="90" key="#Project_Structure/0.23.1440.804@0.23.1440.804" timestamp="1602524416960" />
-    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1603495494752">
+    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1603853780133">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1603495494752" />
+    <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1603853780133" />
     <state x="533" y="165" key="#com.intellij.ide.util.MemberChooser/0.23.1440.811@0.23.1440.811" timestamp="1603488247062" />
     <state x="308" y="189" key="AndroidCreateResourceDirectoryDialog" timestamp="1603807155506">
       <screen x="0" y="23" width="1440" height="811" />
@@ -169,33 +174,33 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="212" key="AndroidCreateResourceFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1603733853068" />
-    <state width="1398" height="601" key="GridCell.Tab.0.bottom" timestamp="1603736439639">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1398" height="724" key="GridCell.Tab.0.bottom" timestamp="1603854873077">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="709" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603648859933" />
+    <state width="1398" height="724" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603854873077" />
     <state width="1398" height="602" key="GridCell.Tab.0.bottom/0.23.1440.808@0.23.1440.808" timestamp="1603505329122" />
-    <state width="1398" height="601" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1603736439639" />
+    <state width="1398" height="615" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1603844269478" />
     <state width="1398" height="24" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603487544189" />
-    <state width="1398" height="601" key="GridCell.Tab.0.center" timestamp="1603736439638">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1398" height="724" key="GridCell.Tab.0.center" timestamp="1603854873075">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="709" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603648859932" />
+    <state width="1398" height="724" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603854873075" />
     <state width="1398" height="602" key="GridCell.Tab.0.center/0.23.1440.808@0.23.1440.808" timestamp="1603505329121" />
-    <state width="1398" height="601" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1603736439638" />
+    <state width="1398" height="615" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1603844269477" />
     <state width="1398" height="24" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603487544188" />
-    <state width="1398" height="601" key="GridCell.Tab.0.left" timestamp="1603736439637">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1398" height="724" key="GridCell.Tab.0.left" timestamp="1603854873074">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="709" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603648859931" />
+    <state width="1398" height="724" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603854873074" />
     <state width="1398" height="602" key="GridCell.Tab.0.left/0.23.1440.808@0.23.1440.808" timestamp="1603505329120" />
-    <state width="1398" height="601" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1603736439637" />
+    <state width="1398" height="615" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1603844269477" />
     <state width="1398" height="24" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603487544187" />
-    <state width="1398" height="601" key="GridCell.Tab.0.right" timestamp="1603736439639">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1398" height="724" key="GridCell.Tab.0.right" timestamp="1603854873076">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="709" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603648859932" />
+    <state width="1398" height="724" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603854873076" />
     <state width="1398" height="602" key="GridCell.Tab.0.right/0.23.1440.808@0.23.1440.808" timestamp="1603505329121" />
-    <state width="1398" height="601" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1603736439639" />
+    <state width="1398" height="615" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1603844269477" />
     <state width="1398" height="24" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603487544188" />
     <state x="458" y="112" key="SettingsEditor" timestamp="1603694656999">
       <screen x="0" y="23" width="1440" height="811" />
@@ -212,10 +217,14 @@
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1603605391381" />
     <state x="399" y="276" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1603515526344" />
     <state x="399" y="276" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1603805839759" />
-    <state x="385" y="200" width="670" height="610" key="search.everywhere.popup" timestamp="1603741963753">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state x="509" y="351" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603850263452">
+      <screen x="0" y="23" width="1440" height="812" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603553976227" />
+    <state x="509" y="351" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.812@0.23.1440.812" timestamp="1603850263452" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603859421338">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603859421338" />
     <state x="385" y="199" width="670" height="606" key="search.everywhere.popup/0.23.1440.806@0.23.1440.806" timestamp="1603547701575" />
     <state x="385" y="199" width="670" height="607" key="search.everywhere.popup/0.23.1440.808@0.23.1440.808" timestamp="1603693510231" />
     <state x="385" y="200" width="670" height="610" key="search.everywhere.popup/0.23.1440.811@0.23.1440.811" timestamp="1603741963753" />
@@ -230,11 +239,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/DebitedTab.java</url>
-          <line>70</line>
+          <line>76</line>
           <properties class="com.example.nahimana.imanage.DebitedTab" method="loadDebitsFromApi">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/RecyclerAdapter.java</url>
+          <line>66</line>
+          <properties class="com.example.nahimana.imanage.helpers.RecyclerAdapter.DebitViewHolder" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
