@@ -19,12 +19,12 @@
              android:layout_margin="16dp">
 
              <TextView
-                 android:text="Expense_id"
+                 android:id="@+id/expenseIdLabel"
                  android:layout_width="150dp"
                  android:layout_height="wrap_content"
                  android:layout_marginRight="4dp"
-                 android:id="@+id/expenseIdLabel"
-                 />
+                 android:text="Expense_id"
+                 android:textStyle="bold" />
              <TextView
                  android:text=""
                  android:layout_width="match_parent"
@@ -34,13 +34,13 @@
                  />
 
              <TextView
-                 android:text="@string/category"
+                 android:id="@+id/expenseCategoryLabel"
                  android:layout_width="150dp"
                  android:layout_height="wrap_content"
-                 android:layout_marginRight="4dp"
-                 android:id="@+id/expenseCategoryLabel"
                  android:layout_below="@+id/expenseId"
-                 />
+                 android:layout_marginRight="4dp"
+                 android:text="@string/category"
+                 android:textStyle="bold" />
              <TextView
                  android:text=""
                  android:layout_width="match_parent"
@@ -51,13 +51,13 @@
                  />
 
              <TextView
-                 android:text="@string/description"
+                 android:id="@+id/expenseDescriptionLabel"
                  android:layout_width="150dp"
                  android:layout_height="wrap_content"
-                 android:layout_marginRight="4dp"
-                 android:id="@+id/expenseDescriptionLabel"
                  android:layout_below="@+id/expenseCategory"
-                 />
+                 android:layout_marginRight="4dp"
+                 android:text="@string/description"
+                 android:textStyle="bold" />
              <TextView
                  android:text=""
                  android:layout_width="match_parent"
@@ -66,14 +66,15 @@
                  android:layout_toRightOf="@id/expenseDescriptionLabel"
                  android:layout_below="@+id/expenseCategory"
                  />
+
              <TextView
-                 android:text="@string/amount"
+                 android:id="@+id/expenseAmountLabel"
                  android:layout_width="150dp"
                  android:layout_height="wrap_content"
-                 android:layout_marginRight="4dp"
-                 android:id="@+id/expenseAmountLabel"
                  android:layout_below="@+id/expenseDescription"
-                 />
+                 android:layout_marginRight="4dp"
+                 android:text="@string/amount"
+                 android:textStyle="bold" />
              <TextView
                  android:text=""
                  android:layout_width="match_parent"
@@ -82,14 +83,15 @@
                  android:layout_toRightOf="@id/expenseDescriptionLabel"
                  android:layout_below="@+id/expenseDescription"
                  />
+
              <TextView
-                 android:text="@string/dueDate"
+                 android:id="@+id/expenseDateLabel"
                  android:layout_width="150dp"
                  android:layout_height="wrap_content"
-                 android:layout_marginRight="4dp"
-                 android:id="@+id/expenseDateLabel"
                  android:layout_below="@+id/expenseAmount"
-                 />
+                 android:layout_marginRight="4dp"
+                 android:text="@string/dueDate"
+                 android:textStyle="bold" />
              <TextView
                  android:text=""
                  android:layout_width="match_parent"
