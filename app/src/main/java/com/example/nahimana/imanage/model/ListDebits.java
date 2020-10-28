@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class ListDebits {
-    private String Names;
+    private String names;
     private String phone;
     private String amount;
     private String paymentDate;
@@ -13,7 +13,7 @@ public class ListDebits {
     private  String remainingDays;
 
     public ListDebits(String names, String phone, String amount, String paymentDate, String dueDate, String payedAmount, String remainingDays) {
-        Names = names;
+        this.names = names;
         this.phone = phone;
         this.amount = amount;
         this.paymentDate = paymentDate;
@@ -22,7 +22,7 @@ public class ListDebits {
         this.remainingDays = remainingDays;
     }
     public String getNames() {
-        return Names;
+        return names;
     }
 
     public String getPhone() {
@@ -48,7 +48,5 @@ public class ListDebits {
     public String getRemainingDays() {
         return remainingDays;
     }
-    public void changeName(String text) {
-        this.Names = text;
-    }
+
 }
