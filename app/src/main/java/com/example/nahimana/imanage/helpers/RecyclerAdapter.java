@@ -101,12 +101,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ListDebits> filteredList = new ArrayList<>();
-            if(constraint.toString().isEmpty()) {
+            if(constraint == null || constraint.length() == 0) {
                 filteredList.addAll(debitsFullList);
             } else  {
                 String filteredPattern = constraint.toString().toLowerCase().trim();
                 for(ListDebits debit: debitsFullList) {
-                    if(debit.getPhone().toUpperCase().contains(filteredPattern)) {
+                    if(debit.getNames().toLowerCase().contains(filteredPattern)) {
                         filteredList.add(debit);
                     }
                 }
