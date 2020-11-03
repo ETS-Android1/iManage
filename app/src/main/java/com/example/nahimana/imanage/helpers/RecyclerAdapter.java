@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,26 +20,28 @@ import com.example.nahimana.imanage.model.ListDebits;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitViewHolder> implements Filterable {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitViewHolder> implements Filterable{
     private List<ListDebits> listDebits;
     private List<ListDebits> debitsFullList;
     private Context context;
-    public OnItemClickListener mListener;
+    private static final String TAG = "RecyclerAdapter";
+    private OnItemClickListener mListener;
 
-    public RecyclerAdapter(List<ListDebits> listDebits, Context context) {
+    public RecyclerAdapter(List<ListDebits> listDebits, Context context, OnItemClickListener listener) {
         this.listDebits = listDebits;
         this.context = context;
         debitsFullList = new ArrayList<>(listDebits);
+        this.mListener = listener;
     }
-
     @NonNull
     @Override
     public DebitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_debited_tab, parent, false);
-        return new DebitViewHolder(v, mListener);
+        return new DebitViewHolder(v);
     }
     @Override
-    public void onBindViewHolder(@NonNull DebitViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull final DebitViewHolder viewHolder, final int position) {
+       try {
         final ListDebits listDebit = listDebits.get(position);
         viewHolder.names.setText(listDebit.getNames());
         viewHolder.phone.setText(listDebit.getPhone());
@@ -49,22 +52,36 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.remainingDays.setText(listDebit.getRemainingDays());
         viewHolder.cardView.setRadius(16);
         viewHolder.cardView.setClickable(true);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String amount= viewHolder.payDebitAmount.getText().toString();
+                mListener.onDebitClick(listDebit, amount);
+            }
+        });
+
+
+
+
+       }catch (NullPointerException e) {
+           Log.e(TAG,"onBindViewHolder: Null pointer" + e.getMessage());
+       }
     }
     @Override
     public int getItemCount() {
         return listDebits.size();
     }
-    public void  setOnclickListener(OnItemClickListener listener){
-        mListener = listener;
-    }
-    public static class DebitViewHolder extends RecyclerView.ViewHolder {
+
+
+    public static class DebitViewHolder extends RecyclerView.ViewHolder{
         public TextView debitId, names, phone, dueDate, paymentDate,amount,payedAmount, remainingDays;
         public EditText payDebitAmount;
         public CardView cardView;
-        public View container;
         Button payDebitBtn;
+        OnItemClickListener mListener;
+        ListDebits debits;
 
-        public DebitViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
+        public DebitViewHolder(@NonNull View itemView) {
             super(itemView);
             debitId = itemView.findViewById(R.id.payDebitId);
             names = itemView.findViewById(R.id.debtorNames);
@@ -76,19 +93,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             remainingDays = itemView.findViewById(R.id.remainingDayz);
             cardView = itemView.findViewById(R.id.debitedCV);
             payDebitAmount = itemView.findViewById(R.id.payDebitAmount);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(listener != null) {
-                        int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
-                        }
-                    }
-                }
-            });
-
         }
 
     }
@@ -123,4 +127,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
          notifyDataSetChanged();
         }
     };
+
+    public interface OnItemClickListener{
+        void onDebitClick(ListDebits liDebits, String amount);
+        //void onDebitClick(ListDebits lb);
+    }
 }

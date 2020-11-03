@@ -18,14 +18,10 @@ import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.example.nahimana.imanage.helpers.Constants;
-import com.example.nahimana.imanage.helpers.OnItemClickListener;
-import com.example.nahimana.imanage.helpers.Payment;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
@@ -43,13 +39,15 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DebitedTab extends Fragment {
+public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickListener{
 
         private RecyclerView recyclerView;
         private RecyclerAdapter adapter;
 
         private List<ListDebits> listDebits;
+        private ArrayList mDebits;
         private Context context;
+        private RecyclerAdapter.OnItemClickListener listener;
         private Button payDebitBtn;
         EditText amount;
 
@@ -65,6 +63,7 @@ public class DebitedTab extends Fragment {
              recyclerView.setLayoutManager(new LinearLayoutManager(context));
              listDebits = new ArrayList<>();
              loadDebitsFromApi();
+             listener = this;
              return view;
     }
 
@@ -75,8 +74,7 @@ public class DebitedTab extends Fragment {
 
     }
     public void loadDebitsFromApi(){
-
-        JsonArrayRequest jar = new JsonArrayRequest( Constants.DEBIT_URL, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jar = new JsonArrayRequest(Constants.DEBIT_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
@@ -93,10 +91,9 @@ public class DebitedTab extends Fragment {
                             jo.getString("remainingDays")
                         );
                         listDebits.add(ld);
-                        adapter = new RecyclerAdapter(listDebits, context);
+                        adapter = new RecyclerAdapter(listDebits, context, listener);
                         recyclerView.setAdapter(adapter);
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -110,14 +107,12 @@ public class DebitedTab extends Fragment {
                 @Override
                 public Map<String, String> getHeaders(){
                 HashMap<String, String> headers = new HashMap<>();
-                headers.put("Authorization", "Bearer  "+SharedUserData.getInstance(context).getToken());
+                headers.put("Authorization", "Bearer  " + SharedUserData.getInstance(context).getToken());
                 return headers;
-
             }
         };
         RequestHandler.getInstance(getContext()).addToRequestQueue(jar);
     }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //
@@ -141,4 +136,10 @@ public class DebitedTab extends Fragment {
        super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Override
+    public void onDebitClick(ListDebits liDebits, String amount) {
+        Toast.makeText(getContext(), "amount is :"+liDebits.getNames() +"amount:"+amount, Toast.LENGTH_LONG).show();
+
+    }
 }
+
