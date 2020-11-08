@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     @Override
@@ -38,9 +40,12 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        viewPager = (ViewPager) findViewById(R.id.viewTab);
         //tabs
-       TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        ViewPager viewPager = findViewById(R.id.viewTab);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+
 
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabPagerAdapter);
