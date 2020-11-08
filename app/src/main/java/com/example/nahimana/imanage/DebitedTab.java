@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.nahimana.imanage.helpers.Constants;
+import com.example.nahimana.imanage.helpers.Payment;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
@@ -82,6 +83,7 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
 
                         JSONObject jo = response.getJSONObject(i);
                         ListDebits ld = new ListDebits(
+                             jo.getString("id"),
                             jo.getString("names"),
                             jo.getString("phone"),
                             jo.getString("amount"),
@@ -138,8 +140,7 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
 
     @Override
     public void onDebitClick(ListDebits liDebits, String amount) {
-        Toast.makeText(getContext(), "amount is :"+liDebits.getNames() +"amount:"+amount, Toast.LENGTH_LONG).show();
-
+       new Payment(getContext(), amount, liDebits.getId(), "debit_id");
     }
 }
 

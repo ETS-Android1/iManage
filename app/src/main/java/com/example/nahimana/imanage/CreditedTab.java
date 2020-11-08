@@ -17,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.CreditAdapter;
+import com.example.nahimana.imanage.helpers.Payment;
+import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
 import com.example.nahimana.imanage.model.ListCredits;
@@ -34,12 +36,12 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CreditedTab extends Fragment {
+public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClickListener {
     RecyclerView.Adapter adapter;
     List<ListCredits> listCredits;
     RecyclerView recyclerView;
     Context context;
-
+     CreditAdapter.OnCreditClickListener creditClickListener;
 
     public CreditedTab() {
         // Required empty public constructor
@@ -54,11 +56,10 @@ public class CreditedTab extends Fragment {
             recyclerView = view.findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
             listCredits = new ArrayList<>();
             loadCreditsFromApi();
+            creditClickListener = this;
         return view;
-
     }
 
     private void loadCreditsFromApi() {
@@ -66,7 +67,6 @@ public class CreditedTab extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
                     try {
-
                         for(int i=0; i<response.length(); i++) {
                             JSONObject jo = response.getJSONObject(i);
                             ListCredits lc = new ListCredits(
@@ -80,7 +80,7 @@ public class CreditedTab extends Fragment {
                                 jo.getString("remainingDays")
                             );
                             listCredits.add(lc);
-                            adapter = new CreditAdapter(context, listCredits);
+                            adapter = new CreditAdapter(context, listCredits, creditClickListener);
                             recyclerView.setAdapter(adapter);
                         }
                     } catch (JSONException e) {
@@ -103,5 +103,8 @@ public class CreditedTab extends Fragment {
         RequestHandler.getInstance(getContext()).addToRequestQueue(credits);
 
     }
-
+    @Override
+    public void onCreditClick(ListCredits lc, String amount) {
+     new Payment(getContext(), amount, lc.get_id(),"credit_id");
+    }
 }

@@ -15,23 +15,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Payment {
-    public Context context;
+    private Context context;
 
-    public void CreditOrDebitPayment(final String amount, final String id, final String paymentType){
+    public Payment(final Context context,final String amount, final String id, final String paymentType) {
+        this.context = context;
         String url;
-        url = paymentType.equals("credit") ? Constants.PAY_CREDIT_URL : Constants.PAY_DEBIT_URL;
-
+        url = paymentType.equals("credit_id") ? Constants.PAY_CREDIT_URL : Constants.PAY_DEBIT_URL;
         StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jo= new JSONObject(response);
+                    JSONObject jo = new JSONObject(response);
                     Toast.makeText(context, jo.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

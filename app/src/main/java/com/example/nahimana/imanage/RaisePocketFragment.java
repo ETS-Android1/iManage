@@ -72,11 +72,9 @@ public class RaisePocketFragment extends Fragment {
                             try {
                                 JSONObject jo = new JSONObject(response);
                                 Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
                         }
                     }, new Response.ErrorListener() {
                         @Override

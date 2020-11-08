@@ -41,8 +41,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     }
     @Override
     public void onBindViewHolder(@NonNull final DebitViewHolder viewHolder, final int position) {
-       try {
+
         final ListDebits listDebit = listDebits.get(position);
+        viewHolder.debitId.setText(listDebit.getId());
         viewHolder.names.setText(listDebit.getNames());
         viewHolder.phone.setText(listDebit.getPhone());
         viewHolder.dueDate.setText(listDebit.getDueDate());
@@ -52,34 +53,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.remainingDays.setText(listDebit.getRemainingDays());
         viewHolder.cardView.setRadius(16);
         viewHolder.cardView.setClickable(true);
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.payDebitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String amount= viewHolder.payDebitAmount.getText().toString();
                 mListener.onDebitClick(listDebit, amount);
             }
         });
-
-
-
-
-       }catch (NullPointerException e) {
-           Log.e(TAG,"onBindViewHolder: Null pointer" + e.getMessage());
-       }
     }
     @Override
     public int getItemCount() {
         return listDebits.size();
     }
-
-
     public static class DebitViewHolder extends RecyclerView.ViewHolder{
         public TextView debitId, names, phone, dueDate, paymentDate,amount,payedAmount, remainingDays;
         public EditText payDebitAmount;
         public CardView cardView;
         Button payDebitBtn;
-        OnItemClickListener mListener;
-        ListDebits debits;
 
         public DebitViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,8 +84,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             remainingDays = itemView.findViewById(R.id.remainingDayz);
             cardView = itemView.findViewById(R.id.debitedCV);
             payDebitAmount = itemView.findViewById(R.id.payDebitAmount);
+            payDebitBtn = itemView.findViewById(R.id.payDebitBtn);
         }
-
     }
 
     @Override
@@ -130,6 +121,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
 
     public interface OnItemClickListener{
         void onDebitClick(ListDebits liDebits, String amount);
-        //void onDebitClick(ListDebits lb);
     }
 }
