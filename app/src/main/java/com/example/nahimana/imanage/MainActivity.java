@@ -1,11 +1,15 @@
 package com.example.nahimana.imanage;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -24,10 +28,16 @@ import android.widget.Toast;
 
 import com.example.nahimana.imanage.helpers.SharedUserData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private NavigationView navigationView;
 
 
     @Override
@@ -38,34 +48,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        viewPager = (ViewPager) findViewById(R.id.viewTab);
+        setupViewpager(viewPager);
         //tabs
-       TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        ViewPager viewPager = findViewById(R.id.viewTab);
-
-        TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(tabPagerAdapter);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        drawer = findViewById(R.id.drawer_layout);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        if(!SharedUserData.getInstance(this).isLoggedIn()){
-            finish();
-            startActivity(new Intent(this,Login.class));
-        } else {
-            View headerView = navigationView.getHeaderView(0);
-            TextView navUser = headerView.findViewById(R.id.LoggedUname);
-            navUser.setText(SharedUserData.getInstance(this).getUsername().toUpperCase());
-        }
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        checkLogin();
     }
 
     @Override
@@ -74,18 +70,49 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             super.onBackPressed();
         }
     }
-
- /*   @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-
-        return true;
+    private void setupViewpager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new DepositedTab(),"Deposits");
+        adapter.addFragment(new SpentTab(), "Expenses");
+        adapter.addFragment(new DebitedTab(),"Debits");
+        adapter.addFragment(new CreditedTab(),"Credits");
+        viewPager.setAdapter(adapter);
     }
-*/
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int index) {
+            return mFragmentList.get(index);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -93,18 +120,15 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_cancel) {
             // return true;
-            startActivity(new Intent(this,Login.class));
+            startActivity(new Intent(this, Login.class));
         } else if (id == R.id.action_signOut) {
             SharedUserData.getInstance(this).logout();
             finish();
-            startActivity(new Intent(this,Login.class));
+            startActivity(new Intent(this, Login.class));
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -113,27 +137,43 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_dashboard) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DashboardFragment()).commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ExpenseFragment()).commit();
+//            Intent intent = new Intent(this,  DashboardFragment.class);
+//            startActivity(intent);
+
+
         } else if (id == R.id.nav_raise_pocket) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RaisePocketFragment()).commit();
+            startActivity(new Intent(this, DepositActivity.class));
+
         } else if (id == R.id.nav_expense) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ExpenseFragment()).commit();
+            startActivity(new Intent(this, ExpenseActivity.class));
+
         } else if (id == R.id.nav_transaction) {
             //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new TransacFragment()).commit();
         } else if (id == R.id.nav_debit) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DebitFragment()).commit();
+          startActivity(new Intent(this, DebitActivity.class));
+
         } else if (id == R.id.nav_credit) {
-           getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CreditFragment()).commit();
+            startActivity(new Intent(this, CreditActivity.class));
         } else if (id == R.id.nav_exit) {
             finish();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return false;
+        return true;
     }
-//Codes of tabbed fragment
+
+    private void checkLogin(){
+
+     if(!SharedUserData.getInstance(this).isLoggedIn()){
+         finish();
+         startActivity(new Intent(this, Login.class));
+     } else {
+         View headerView = navigationView.getHeaderView(0);
+         TextView navUser = headerView.findViewById(R.id.LoggedUname);
+         navUser.setText(SharedUserData.getInstance(this).getUsername().toUpperCase());
+     }
+ }
 
 }

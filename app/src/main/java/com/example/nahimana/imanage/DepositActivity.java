@@ -1,22 +1,13 @@
 package com.example.nahimana.imanage;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.Context;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,38 +19,28 @@ import com.example.nahimana.imanage.helpers.SharedUserData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.content.ContentValues.TAG;
-
-public class RaisePocketFragment extends Fragment {
-
+public class DepositActivity extends AppCompatActivity {
+    Button addIt;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_deposit);
+        addIt  = findViewById(R.id.saveNewMoney);
+        setTitle("Add Deposit");
+        addDeposit();
+        
     }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragement_raise_pocket, container,false);
-         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-         
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void addDeposit(){
 
         try {
-            Button   addIt = getView().findViewById(R.id.saveNewMoney);
+
             addIt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EditText amountTxt = getView().findViewById(R.id.newMoney);
+                    EditText amountTxt = findViewById(R.id.newMoney);
                     final String amountEtxt = amountTxt.getText().toString();
                     if(TextUtils.isEmpty(amountEtxt)){
                         amountTxt.setError("Fund can not be empty");
@@ -72,7 +53,7 @@ public class RaisePocketFragment extends Fragment {
 
                             try {
                                 JSONObject jo = new JSONObject(response);
-                                Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -89,7 +70,7 @@ public class RaisePocketFragment extends Fragment {
                         protected Map<String, String> getParams()  {
                             Map<String,String> params = new HashMap<>();
                             params.put("amount", amountEtxt);
-                            params.put("user_id", SharedUserData.getInstance(getContext()).getUserId());
+                            params.put("user_id", SharedUserData.getInstance(getApplicationContext()).getUserId());
 
                             return params;
                         }
@@ -97,21 +78,16 @@ public class RaisePocketFragment extends Fragment {
                         @Override
                         public Map<String, String> getHeaders() {
                             HashMap<String, String> headers = new HashMap();
-                            headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getContext()).getToken());
+                            headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getApplicationContext()).getToken());
                             return headers;
                         }
                     };
-
-                   RequestHandler.getInstance(getActivity().getApplicationContext()).addToRequestQueue(sr);
-
-
+                    RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(sr);
                 }
             });
         }catch (Exception e){
-            Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
 
         }
     }
-
-
 }

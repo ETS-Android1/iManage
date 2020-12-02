@@ -11,18 +11,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<string-array name="available_expenses">
-    <item>choose your expense category </item>
-    <item>Sport and Leisure</item>
-    <item>Make ups</item>
-    <item>Food and Restaurants </item>
-    <item>Clothes</item>
-    <item>Transportation</item>
-    <item>Passion </item>
-    <item>Domestic Materials</item>
-    <item>Others</item>
+    <string-array name="available_expenses">
+        <item>choose your expense category </item>
+        <item>Sport and Leisure</item>
+        <item>Make ups</item>
+        <item>Food and Restaurants </item>
+        <item>Clothes</item>
+        <item>Transportation</item>
+        <item>Passion </item>
+        <item>Domestic Materials</item>
+        <item>Others</item>
 
-</string-array>
+    </string-array>
 
     <string name="amount">Amount</string>
     <string name="phone">Phone</string>
