@@ -102,7 +102,7 @@ public class User extends AppCompatActivity {
                             pd.setMessage(jo.getString("message"));
                             pd.show();
                             if(!jo.getBoolean("error")){
-                                startActivity(new Intent(getApplicationContext(),Login.class));
+                                startActivity(new Intent(getApplicationContext(), Login.class));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

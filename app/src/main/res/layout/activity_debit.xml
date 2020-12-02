@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:layout_gravity="center"
-    tools:context=".DebitFragment">
+    tools:context=".DebitActivity">
 
     <EditText
         android:id="@+id/debitedAmount"
@@ -41,17 +41,17 @@
         android:background="@drawable/rounded_edit_text"
         />
 
-        <EditText
-            android:layout_width="240dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:hint="date"
-            android:inputType="datetime"
-            android:clickable="false"
-            android:id="@+id/timeToReturn"
-            android:background="@drawable/rounded_edit_text"
-            android:layout_below="@id/debtorPhone"
-            />
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:hint="date"
+        android:inputType="datetime"
+        android:clickable="false"
+        android:id="@+id/timeToReturn"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_below="@id/debtorPhone"
+        />
 
     <ImageView
         android:id="@+id/CalenderIcon"

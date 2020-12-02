@@ -1,21 +1,15 @@
 package com.example.nahimana.imanage;
 
 import android.app.DatePickerDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,35 +25,24 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreditFragment extends Fragment {
-ImageView dateIcon;
-EditText dateText, amountText, creditor, creditorPhone, timeToPay;
-Button saveCredit;
-
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragement_credit, container, false);
-        amountText = view.findViewById(R.id.creditedAmount);
-        creditor = view.findViewById(R.id.creditor);
-        creditorPhone = view.findViewById(R.id.creditorPhone);
-        timeToPay = view.findViewById(R.id.timeToPay);
-        saveCredit = view.findViewById(R.id.saveCredit);
-        saveCredit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createCredit();
-            }
-        });
-        return view;
-    }
+public class CreditActivity extends AppCompatActivity {
+    ImageView dateIcon;
+    EditText dateText, amountText, creditor, creditorPhone, timeToPay;
+    Button saveCredit;
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_credit);
+        amountText = findViewById(R.id.creditedAmount);
+        creditor = findViewById(R.id.creditor);
+        creditorPhone = findViewById(R.id.creditorPhone);
+        timeToPay = findViewById(R.id.timeToPay);
+        saveCredit = findViewById(R.id.saveCredit);
+        setTitle("Record A Credit");
 
-        dateIcon = getView().findViewById(R.id.dateIcon);
-        dateText = getView().findViewById(R.id.timeToPay);
+        dateIcon = findViewById(R.id.dateIcon);
+        dateText = findViewById(R.id.timeToPay);
         dateIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -68,10 +51,10 @@ Button saveCredit;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(getApplicationContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        DebitFragment df = new DebitFragment();
+                        DebitActivity df = new DebitActivity();
 
                         int hour= calendar.get(Calendar.HOUR);
                         int min = calendar.get(Calendar.MINUTE);
@@ -86,7 +69,13 @@ Button saveCredit;
                 datePicker.show();
             }
         });
-
+        
+        saveCredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createCredit();
+            }
+        });
     }
     private void createCredit(){
         StringRequest sr = new StringRequest(Request.Method.POST, Constants.CREDIT_URL, new Response.Listener<String>() {
@@ -94,7 +83,7 @@ Button saveCredit;
             public void onResponse(String response) {
                 try {
                     JSONObject jo = new JSONObject(response);
-                    Toast.makeText(getContext(), jo.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_LONG).show();
                 }catch (JSONException je){
                     je.printStackTrace();
                 }
@@ -112,17 +101,16 @@ Button saveCredit;
                 params.put("amount", amountText.getText().toString());
                 params.put("phone", creditorPhone.getText().toString());
                 params.put("timeToPay", timeToPay.getText().toString());
-                params.put("user_id", SharedUserData.getInstance(getContext()).getUserId());
+                params.put("user_id", SharedUserData.getInstance(getApplicationContext()).getUserId());
                 return params;
             };
-                @Override
-                public Map<String, String> getHeaders(){
+            @Override
+            public Map<String, String> getHeaders(){
                 HashMap<String, String> headers = new HashMap();
-                headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getContext()).getToken());
+                headers.put("Authorization", "Bearer "+SharedUserData.getInstance(getApplicationContext()).getToken());
                 return headers;
             };
         };
-        RequestHandler.getInstance(getContext()).addToRequestQueue(sr);
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(sr);
     }
 }
-
