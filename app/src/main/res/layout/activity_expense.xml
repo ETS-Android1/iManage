@@ -9,33 +9,28 @@
     <EditText
         android:layout_marginTop="30dp"
         android:id="@+id/takenMoney"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:inputType="number"
         android:background="@drawable/rounded_edit_text"
         android:hint="10000 $"
-        />
+        style="@style/ExpenseEditText"/>
     <Spinner
-
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@+id/takenMoney"
         android:id="@+id/expenseReason"
-        >
-    </Spinner>
+        android:background="@drawable/rounded_edit_text"/>
+
     <EditText
         android:hint="Description (Optional)"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:id="@+id/description"
         android:layout_below="@id/expenseReason"
         android:background="@drawable/rounded_edit_text"
+        style="@style/ExpenseEditText"
         />
-
     <Button
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_below="@+id/description"
         android:layout_height="wrap_content"
@@ -45,5 +40,4 @@
         android:textColor="#fff"
         android:background="@drawable/rounded_button"
         />
-
 </RelativeLayout>

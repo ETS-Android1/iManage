@@ -2,8 +2,10 @@ package com.example.nahimana.imanage;
 
 import android.app.ActionBar;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,15 +27,16 @@ import com.example.nahimana.imanage.helpers.SharedUserData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
 
-public class DebitActivity extends AppCompatActivity {
-    ImageView calendarIcon;
+public class DebitActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     EditText dateField, debiAmount,debtorPhone,debtor;
     Button saveDebit;
-    public Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,41 +48,21 @@ public class DebitActivity extends AppCompatActivity {
         setTitle("Record a Debit");
 
         saveDebit = findViewById(R.id.saveDebit);
-
         saveDebit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createDebit();
             }
         });
-        calendarIcon = findViewById(R.id.CalenderIcon);
         dateField = findViewById(R.id.timeToReturn);
-
-        calendarIcon.setOnClickListener(new View.OnClickListener() {
+        dateField.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                dateField.setText("");
-                final Calendar calendar = Calendar.getInstance();
-                int yy = calendar.get(Calendar.YEAR);
-                int mm = calendar.get(Calendar.MONTH);
-                int dd = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePicker = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                        int hour= calendar.get(Calendar.HOUR);
-                        int min = calendar.get(Calendar.MINUTE);
-                        int sec = calendar.get(Calendar.SECOND);
-
-                        String date = year + "-" + formatDate(monthOfYear+1)
-                                + "-" + formatDate(dayOfMonth) + " "+ formatDate(hour) +":"+formatDate(min) +":"+ formatDate(sec);
-                        dateField.setText(date);
-                    }
-                }, yy, mm, dd);
-                datePicker.show();
+            public void onClick(View v) {
+                DialogFragment df = new DatePickerFragment();
+                df.show(getSupportFragmentManager(),"DatePicker");
             }
         });
+
     }
     public void createDebit(){
         StringRequest sr = new StringRequest(Request.Method.POST, Constants.DEBIT_URL, new Response.Listener<String>() {
@@ -125,9 +108,21 @@ public class DebitActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        return super.onOptionsItemSelected(item);
+        int hour, min, sec;
+        hour = c.get(Calendar.HOUR);
+        min = c.get(Calendar.MINUTE);
+        sec = c.get(Calendar.SECOND);
+
+        String date = year + "-" + formatDate(month+1)
+                + "-" + formatDate(dayOfMonth) + " "+ formatDate(hour) +":"+formatDate(min) +":"+ formatDate(sec);
+
+        dateField.setText(date);
     }
+
 }
