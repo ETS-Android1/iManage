@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".Login">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/ic_wave_login_header"/>
     <TextView
         android:id="@+id/header"
         android:layout_width="363dp"
@@ -19,58 +22,57 @@
         android:textSize="30dp" />
 
     <LinearLayout
-        android:padding="12dp"
         android:id="@+id/gridlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="200dp"
+
         android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <EditText
             android:id="@+id/usernameLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:hint="Username"
             android:background="@drawable/rounded_edit_text"
-            />
+            android:hint="Username" />
 
         <EditText
             android:id="@+id/passLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:hint="Password"
-            android:inputType="textPassword"
             android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edit_text"
-            />
+            android:gravity="center_vertical"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
         <Button
             android:id="@+id/signIpBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_gravity="fill_horizontal|center_vertical"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
-            android:paddingLeft="30dp"
-            android:textColor="#fff"
-            android:text="Sign in"
-            android:layout_gravity="fill_horizontal|center_vertical"
             android:gravity="center_vertical"
-            />
+            android:paddingLeft="30dp"
+            android:text="Sign in"
+            android:textColor="#fff" />
+
         <TextView
             android:id="@+id/noAccount"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/no_account"
             android:layout_gravity="fill_horizontal|center_vertical"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:onClick="goToRegister"/>
+            android:onClick="goToRegister"
+            android:text="@string/no_account" />
     </LinearLayout>
 </RelativeLayout>

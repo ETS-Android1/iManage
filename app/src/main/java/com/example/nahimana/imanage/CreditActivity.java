@@ -1,6 +1,7 @@
 package com.example.nahimana.imanage;
 
 import android.app.DatePickerDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreditActivity extends AppCompatActivity {
+public class CreditActivity extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener{
     ImageView dateIcon;
     EditText dateText, amountText, creditor, creditorPhone, timeToPay;
     Button saveCredit;
@@ -41,32 +42,15 @@ public class CreditActivity extends AppCompatActivity {
         saveCredit = findViewById(R.id.saveCredit);
         setTitle("Record A Credit");
 
-        dateIcon = findViewById(R.id.dateIcon);
+
         dateText = findViewById(R.id.timeToPay);
-        dateIcon.setOnClickListener(new View.OnClickListener() {
+        dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 dateText.setText("");
-                final Calendar calendar = Calendar.getInstance();
-                int yy = calendar.get(Calendar.YEAR);
-                int mm = calendar.get(Calendar.MONTH);
-                int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(getApplicationContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        DebitActivity df = new DebitActivity();
-
-                        int hour= calendar.get(Calendar.HOUR);
-                        int min = calendar.get(Calendar.MINUTE);
-                        int sec = calendar.get(Calendar.SECOND);
-
-                        String date = year + "-" + df.formatDate(monthOfYear+1)
-                                + "-" + df.formatDate(dayOfMonth) + " "+ df.formatDate(hour) +":"+df.formatDate(min) +":"+ df.formatDate(sec);
-
-                        dateText.setText(date);
-                    }
-                }, yy, mm, dd);
-                datePicker.show();
+                DialogFragment df = new DatePickerFragment();
+                df.show(getSupportFragmentManager(),"Date Picker");
+                
             }
         });
         
@@ -112,5 +96,24 @@ public class CreditActivity extends AppCompatActivity {
             };
         };
         RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(sr);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        DebitActivity da = new DebitActivity();
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        int hour, min, sec;
+        hour = c.get(Calendar.HOUR);
+        min = c.get(Calendar.MINUTE);
+        sec = c.get(Calendar.SECOND);
+
+        String date = year + "-" + da.formatDate(month+1)
+                + "-" + da.formatDate(dayOfMonth) + " "+ da.formatDate(hour) +":"+da.formatDate(min) +":"+ da.formatDate(sec);
+
+        dateText.setText(date);
     }
 }

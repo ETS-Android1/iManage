@@ -9,9 +9,7 @@
 
     <EditText
         android:id="@+id/creditedAmount"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="15dp"
+        style="@style/EditTextStyle"
         android:inputType="number"
         android:hint="10000"
         android:background="@drawable/rounded_edit_text"
@@ -19,9 +17,7 @@
         />
     <EditText
         android:id="@+id/creditor"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="15dp"
+        style="@style/EditTextStyle"
         android:inputType="textPersonName"
         android:hint="John Doe"
         android:layout_below="@+id/creditedAmount"
@@ -30,33 +26,22 @@
         />
     <EditText
         android:id="@+id/creditorPhone"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="15dp"
+        style="@style/EditTextStyle"
         android:inputType="phone"
         android:hint="078300000000"
         android:layout_below="@+id/creditor"
         android:background="@drawable/rounded_edit_text"
-
         />
 
     <EditText
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_margin="15dp"
-        android:hint="xxxx-xx-xx xx-xx-xx"
+        style="@style/EditTextStyle"
+        android:hint="2020-12-12 12-00-01"
         android:clickable="false"
+        android:focusable="false"
+        android:drawableEnd="@drawable/ic_date"
         android:id="@+id/timeToPay"
         android:background="@drawable/rounded_edit_text"
         android:layout_below="@+id/creditorPhone"
-        />
-    <ImageView
-        android:id="@+id/dateIcon"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_date"
-        android:layout_below="@+id/creditorPhone"
-        android:layout_toRightOf="@+id/timeToPay"
         />
     <Button
         android:layout_marginTop="32dp"
@@ -67,7 +52,5 @@
         android:textColor="#fff"
         android:background="@drawable/rounded_button"
         android:text="Save debit"
-        android:layout_below="@+id/dateIcon"/>
-
-
+        android:layout_below="@+id/timeToPay"/>
 </RelativeLayout>
