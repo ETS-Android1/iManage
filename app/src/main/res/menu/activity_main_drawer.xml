@@ -16,21 +16,18 @@
             android:id="@+id/nav_expense"
             android:icon="@drawable/ic_remove"
             android:title="Expense" />
-        <item
-            android:id="@+id/nav_transaction"
-            android:icon="@drawable/ic_cross"
-            android:title="Transaction" />
+
     </group>
 
     <item android:title="Loans">
         <menu>
             <item
                 android:id="@+id/nav_debit"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_lease"
                 android:title="Debit" />
             <item
                 android:id="@+id/nav_credit"
-                android:icon="@drawable/ic_return"
+                android:icon="@drawable/ic_lend"
                 android:title="Credit" />
             <item
                 android:id="@+id/nav_exit"

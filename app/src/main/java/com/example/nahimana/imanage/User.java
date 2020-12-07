@@ -82,10 +82,7 @@ public class User extends AppCompatActivity {
 
         }
         return isValid;
-
-
     }
-
     public void signUp(final String uEmail, final String uName, final String uPassword, final String pass2,  final String uPhone,final String uBalance) {
 
             pd.setMessage("Please wait ...");
@@ -98,7 +95,7 @@ public class User extends AppCompatActivity {
                         pd.dismiss();
                         try {
                             JSONObject jo = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
                             pd.setMessage(jo.getString("message"));
                             pd.show();
                             if(!jo.getBoolean("error")){

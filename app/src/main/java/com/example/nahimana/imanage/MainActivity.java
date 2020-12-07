@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
     }
     private void setupViewpager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DepositedTab(),"Deposits");
+        adapter.addFragment(new DepositedTab(),"Transactions");
         adapter.addFragment(new SpentTab(), "Expenses");
         adapter.addFragment(new DebitedTab(),"Debits");
         adapter.addFragment(new CreditedTab(),"Credits");
@@ -138,21 +138,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_dashboard) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ExpenseFragment()).commit();
-//            Intent intent = new Intent(this,  DashboardFragment.class);
-//            startActivity(intent);
-
+            startActivity(new Intent(this, DashboardActivity.class));
 
         } else if (id == R.id.nav_raise_pocket) {
             startActivity(new Intent(this, DepositActivity.class));
 
         } else if (id == R.id.nav_expense) {
             startActivity(new Intent(this, ExpenseActivity.class));
-
-        } else if (id == R.id.nav_transaction) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new TransacFragment()).commit();
         } else if (id == R.id.nav_debit) {
-          startActivity(new Intent(this, DebitActivity.class));
+            startActivity(new Intent(this, DebitActivity.class));
 
         } else if (id == R.id.nav_credit) {
             startActivity(new Intent(this, CreditActivity.class));

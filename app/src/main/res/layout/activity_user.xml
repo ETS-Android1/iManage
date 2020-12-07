@@ -12,14 +12,19 @@
 
     <TextView
         android:id="@+id/header"
-        android:layout_width="363dp"
-        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="-76dp"
-        android:text="Account Creation"
+        android:text="@string/welcome"
         android:gravity="center"
+        android:textColor="#fff"
         android:textAllCaps="true"
-        android:textSize="30dp" />
+        android:textSize="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/gridlayout"
@@ -101,5 +106,6 @@
             android:textAlignment="center"
             android:textColor="#fff" />
     </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>
+
