@@ -77,15 +77,8 @@ public class User extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please fill Required information", Toast.LENGTH_SHORT).show();
             isValid=false;
         }
-        if(pass1.matches(pass2)) {
-           Toast.makeText(this,"Passwords Does not Match",Toast.LENGTH_SHORT).show();
-
-        }
         return isValid;
-
-
     }
-
     public void signUp(final String uEmail, final String uName, final String uPassword, final String pass2,  final String uPhone,final String uBalance) {
 
             pd.setMessage("Please wait ...");
@@ -98,11 +91,12 @@ public class User extends AppCompatActivity {
                         pd.dismiss();
                         try {
                             JSONObject jo = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
-                            pd.setMessage(jo.getString("message"));
-                            pd.show();
                             if(!jo.getBoolean("error")){
                                 startActivity(new Intent(getApplicationContext(), Login.class));
+                            }else {
+                                pd.setMessage(jo.getString("message"));
+                                pd.setCancelable(true);
+                                pd.show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

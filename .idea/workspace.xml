@@ -8,7 +8,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="warn" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -17,10 +17,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +39,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -72,8 +80,14 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
   <component name="RecentsManager">
     <key name="android.template.972234164">
+      <recent name="com.example.nahimana.imanage" />
+    </key>
+    <key name="android.template.1518187976">
       <recent name="com.example.nahimana.imanage" />
     </key>
   </component>
@@ -151,15 +165,19 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="245" y="189" key="#PSD" timestamp="1603146174283">
+    <state x="245" y="189" key="#PSD" timestamp="1607372102863">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="245" y="189" key="#PSD/0.0.1440.900@0.0.1440.900" timestamp="1603146174283" />
+    <state x="245" y="189" key="#PSD/0.0.1440.900@0.0.1440.900" timestamp="1607372102863" />
     <state x="320" y="75" key="#Project_Structure" timestamp="1602525092880">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="75" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1602525092880" />
     <state x="320" y="90" key="#Project_Structure/0.23.1440.804@0.23.1440.804" timestamp="1602524416960" />
+    <state x="468" y="293" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1607372012379">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="468" y="293" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1440.900@0.0.1440.900" timestamp="1607372012379" />
     <state x="533" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1606985117681">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -182,31 +200,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="579" y="312" key="AndroidCreateXmlResourceDialog/0.0.1440.900@0.0.1440.900" timestamp="1606952796266" />
-    <state width="1398" height="387" key="GridCell.Tab.0.bottom" timestamp="1606945282312">
+    <state width="1398" height="387" key="GridCell.Tab.0.bottom" timestamp="1607388708246">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="387" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606945282312" />
+    <state width="1398" height="387" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607388708246" />
     <state width="1398" height="602" key="GridCell.Tab.0.bottom/0.23.1440.808@0.23.1440.808" timestamp="1603505329122" />
     <state width="1398" height="208" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1605338899642" />
     <state width="1398" height="24" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603487544189" />
-    <state width="1398" height="387" key="GridCell.Tab.0.center" timestamp="1606945282311">
+    <state width="1398" height="387" key="GridCell.Tab.0.center" timestamp="1607388708245">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="387" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606945282311" />
+    <state width="1398" height="387" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607388708245" />
     <state width="1398" height="602" key="GridCell.Tab.0.center/0.23.1440.808@0.23.1440.808" timestamp="1603505329121" />
     <state width="1398" height="208" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1605338899642" />
     <state width="1398" height="24" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603487544188" />
-    <state width="1398" height="387" key="GridCell.Tab.0.left" timestamp="1606945282311">
+    <state width="1398" height="387" key="GridCell.Tab.0.left" timestamp="1607388708244">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="387" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606945282311" />
+    <state width="1398" height="387" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607388708244" />
     <state width="1398" height="602" key="GridCell.Tab.0.left/0.23.1440.808@0.23.1440.808" timestamp="1603505329120" />
     <state width="1398" height="208" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1605338899642" />
     <state width="1398" height="24" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603487544187" />
-    <state width="1398" height="387" key="GridCell.Tab.0.right" timestamp="1606945282312">
+    <state width="1398" height="387" key="GridCell.Tab.0.right" timestamp="1607388708246">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="387" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606945282312" />
+    <state width="1398" height="387" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607388708246" />
     <state width="1398" height="602" key="GridCell.Tab.0.right/0.23.1440.808@0.23.1440.808" timestamp="1603505329121" />
     <state width="1398" height="208" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1605338899642" />
     <state width="1398" height="24" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603487544188" />
@@ -220,14 +238,15 @@
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1440.900@0.0.1440.900" timestamp="1602551272634" />
     <state x="100" y="100" width="1240" height="700" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.811@0.23.1440.811" timestamp="1603930894997" />
-    <state x="399" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1606980830026">
+    <state x="399" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1607371825522">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="399" y="269" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1606980830026" />
+    <state x="399" y="269" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1607371825522" />
     <state x="399" y="276" key="com.intellij.ide.util.TipDialog/0.23.1440.806@0.23.1440.806" timestamp="1603515526344" />
     <state x="399" y="276" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1603805839759" />
     <state x="399" y="269" key="com.intellij.ide.util.TipDialog/0.23.1440.811@0.23.1440.811" timestamp="1605947686141" />
-    <state x="399" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.814@0.23.1440.814" timestamp="1604389557424" />
+    <state x="399" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.812@0.23.1440.812" timestamp="1607021713075" />
+    <state x="399" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.814@0.23.1440.814" timestamp="1607198273109" />
     <state x="509" y="351" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603850263452">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
@@ -236,13 +255,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="312" y="37" width="816" height="825" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1606941656755" />
-    <state x="385" y="200" width="670" height="610" key="search.everywhere.popup" timestamp="1606999733891">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1607385726294">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1606954017515" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607385726294" />
     <state x="385" y="199" width="670" height="606" key="search.everywhere.popup/0.23.1440.806@0.23.1440.806" timestamp="1603547701575" />
     <state x="385" y="199" width="670" height="607" key="search.everywhere.popup/0.23.1440.808@0.23.1440.808" timestamp="1603693510231" />
     <state x="385" y="200" width="670" height="610" key="search.everywhere.popup/0.23.1440.811@0.23.1440.811" timestamp="1606999733891" />
+    <state x="385" y="201" width="670" height="613" key="search.everywhere.popup/0.23.1440.814@0.23.1440.814" timestamp="1607198672940" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -281,6 +301,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/ExpenseActivity.java</url>
           <line>65</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/RecyclerAdapter.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/nahimana/imanage/helpers/RecyclerAdapter.java</url>

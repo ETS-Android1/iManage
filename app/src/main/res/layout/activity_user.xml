@@ -12,94 +12,99 @@
 
     <TextView
         android:id="@+id/header"
-        android:layout_width="363dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="-76dp"
-        android:text="Account Creation"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textSize="30dp" />
-
-    <LinearLayout
-        android:id="@+id/gridlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="-76dp"
+        android:text="@string/welcome"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textAllCaps="true"
+        android:textSize="16dp" />
 
-        <TextView
-            android:id="@+id/errors"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp">
+
+        <LinearLayout
+            android:id="@+id/gridlayout"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical"
-            android:inputType="text"
-            android:visibility="gone" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-        <EditText
-            android:id="@+id/username"
-            style="@style/EditTextUserStyle"
-            android:background="@drawable/rounded_edit_text"
-            android:hint="Names" />
+            <TextView
+                android:id="@+id/errors"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:visibility="gone" />
 
-        <EditText
-            android:id="@+id/email"
-            style="@style/EditTextUserStyle"
-            android:hint="Email"
-            />
+            <EditText
+                android:id="@+id/username"
+                style="@style/EditTextUserStyle"
+                android:background="@drawable/rounded_edit_text"
+                android:hint="Names" />
 
-        <EditText
-            android:id="@+id/mobilePhone"
-            style="@style/EditTextUserStyle"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"
-            android:hint="07800000000"
-            android:inputType="phone"
-            />
-        <EditText
-            android:id="@+id/pass1"
-            style="@style/EditTextUserStyle"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/email"
+                style="@style/EditTextUserStyle"
+                android:hint="Email" />
 
-        <EditText
-            android:id="@+id/pass2"
-            style="@style/EditTextUserStyle"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"
-            android:hint="Confirm password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/mobilePhone"
+                style="@style/EditTextUserStyle"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:hint="07800000000"
+                android:inputType="phone" />
 
-        <EditText
-            android:id="@+id/initialAmount"
-            style="@style/EditTextUserStyle"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:gravity="center_vertical"
-            android:hint="Initial Amount"
-            android:inputType="number"
-            />
-        <Button
-            android:id="@+id/signUpBtn"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="fill_horizontal|center_vertical"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/rounded_button"
-            android:gravity="center_horizontal|center"
-            android:paddingLeft="50dp"
-            android:text="Create"
-            android:textAlignment="center"
-            android:textColor="#fff" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/pass1"
+                style="@style/EditTextUserStyle"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:hint="Password"
+                android:inputType="textPassword" />
 
+            <EditText
+                android:id="@+id/pass2"
+                style="@style/EditTextUserStyle"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:hint="Confirm password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/initialAmount"
+                style="@style/EditTextUserStyle"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:hint="Initial Amount"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/signUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rounded_button"
+                android:gravity="center_horizontal|center"
+                android:paddingLeft="50dp"
+                android:text="Create"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
+

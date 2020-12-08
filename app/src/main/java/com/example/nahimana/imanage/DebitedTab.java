@@ -84,7 +84,7 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
                         JSONObject jo = response.getJSONObject(i);
                         ListDebits ld = new ListDebits(
                              jo.getString("id"),
-                            jo.getString("names"),
+                            jo.getString("debitor"),
                             jo.getString("phone"),
                             jo.getString("amount"),
                             jo.getString("timeToPay"),

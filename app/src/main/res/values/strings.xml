@@ -7,7 +7,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="action_cancel">Cancel</string>
-    <string name="no_account">Does not have account ?</string>
+    <string name="no_account">New to iManage</string>
+    <string name="welcome">Know where Your money go by Recording your debits, credits and daily expenses</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

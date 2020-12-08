@@ -16,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="-76dp"
-        android:text="Sign in"
+        android:text="Welcome Back"
+        android:textColor="#fff"
         android:gravity="center"
         android:textAllCaps="true"
         android:textSize="30dp" />
@@ -28,7 +29,7 @@
         android:layout_below="@+id/header"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="204dp"
 
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
@@ -40,6 +41,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edit_text"
+            android:paddingLeft="8dp"
             android:hint="Username" />
 
         <EditText
@@ -51,6 +53,7 @@
             android:background="@drawable/rounded_edit_text"
             android:gravity="center_vertical"
             android:hint="Password"
+            android:paddingLeft="8dp"
             android:inputType="textPassword" />
 
         <Button
