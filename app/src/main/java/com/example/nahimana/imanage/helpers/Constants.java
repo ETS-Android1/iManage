@@ -3,7 +3,7 @@ package com.example.nahimana.imanage.helpers;
 public class Constants {
 
 //    public static final String ROOT_URL="http:/127.0.0.1:8000/api/";
-   // public static final String ROOT_URL="https://fathomless-taiga-31341.herokuapp.com/api/";    //production url
+    //public static final String ROOT_URL="https://fathomless-taiga-31341.herokuapp.com/api/";    //production url
     public static final String ROOT_URL="http://192.168.1.72:8000/api/";
 
     public static final String USER_REGISTER_URL=ROOT_URL+"users";

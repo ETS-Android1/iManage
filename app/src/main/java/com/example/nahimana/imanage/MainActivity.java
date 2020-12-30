@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
     }
     private void setupViewpager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DepositedTab(),"Transactions");
+        adapter.addFragment(new TransactionTab(),"Transactions");
         adapter.addFragment(new SpentTab(), "Expenses");
         adapter.addFragment(new DebitedTab(),"Debits");
         adapter.addFragment(new CreditedTab(),"Credits");
