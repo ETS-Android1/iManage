@@ -11,19 +11,18 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DepositedTab extends Fragment {
+public class TransactionTab extends Fragment {
 
 
-    public DepositedTab() {
+    public TransactionTab() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_deposited_tab, container, false);
+        return inflater.inflate(R.layout.fragment_transaction_tab, container, false);
     }
 
 

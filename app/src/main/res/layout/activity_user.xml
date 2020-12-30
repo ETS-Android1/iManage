@@ -5,27 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".User">
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/ic_wave_login_header"/>
-
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="-76dp"
-        android:text="@string/welcome"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:textAllCaps="true"
-        android:textSize="16dp" />
+        android:layout_height="110dp"
+        android:background="@drawable/ic_wave_login_header" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="90dp">
 
         <LinearLayout
             android:id="@+id/gridlayout"
@@ -35,7 +25,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -43,51 +32,53 @@
                 android:id="@+id/errors"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_gravity="fill_horizontal|center_vertical"
+
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:inputType="text"
                 android:visibility="gone" />
 
             <EditText
                 android:id="@+id/username"
                 style="@style/EditTextUserStyle"
                 android:background="@drawable/rounded_edit_text"
+                android:drawableLeft="@drawable/ic_info"
                 android:hint="Names" />
 
             <EditText
                 android:id="@+id/email"
                 style="@style/EditTextUserStyle"
+                android:drawableLeft="@drawable/ic_email"
                 android:hint="Email" />
 
             <EditText
                 android:id="@+id/mobilePhone"
-                style="@style/EditTextUserStyle"
-                android:layout_gravity="fill_horizontal|center_vertical"
-                android:gravity="center_vertical"
+                style="@style/phoneNumberTv"
+
+
                 android:hint="07800000000"
                 android:inputType="phone" />
 
             <EditText
                 android:id="@+id/pass1"
-                style="@style/EditTextUserStyle"
-                android:layout_gravity="fill_horizontal|center_vertical"
+                style="@style/ptv"
+
                 android:gravity="center_vertical"
                 android:hint="Password"
                 android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/pass2"
-                style="@style/EditTextUserStyle"
-                android:layout_gravity="fill_horizontal|center_vertical"
+                style="@style/ptv"
+
                 android:gravity="center_vertical"
-                android:hint="Confirm password"
+                android:hint="Re-enter Password"
                 android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/initialAmount"
                 style="@style/EditTextUserStyle"
-                android:layout_gravity="fill_horizontal|center_vertical"
+
+                android:drawableLeft="@drawable/ic_monetize"
                 android:gravity="center_vertical"
                 android:hint="Initial Amount"
                 android:inputType="number" />
@@ -96,7 +87,7 @@
                 android:id="@+id/signUpBtn"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_gravity="fill_horizontal|center_vertical"
+
                 android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_button"
                 android:gravity="center_horizontal|center"
@@ -105,6 +96,24 @@
                 android:textAlignment="center"
                 android:textColor="#fff" />
         </LinearLayout>
+
     </ScrollView>
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/bottomText"
+        android:layout_below="@id/scrollView"
+        android:text="Already has an account?" />
+
+    <TextView
+        style="@style/bottomText"
+        android:layout_toRightOf="@+id/question"
+        android:text="Sign-in"
+        android:textColor="@color/colorWarning"
+        android:id="@+id/openLogin"
+        android:layout_below="@id/scrollView"
+         />
+
+
 </RelativeLayout>
 

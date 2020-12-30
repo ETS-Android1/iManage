@@ -86,8 +86,8 @@ public class Login extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        pd.setMessage("Unable To Login");
                         pd.dismiss();
-                        Toast.makeText(getApplicationContext(),"volley is receiving an error"+error.getMessage(),Toast.LENGTH_SHORT).show();
                         error.printStackTrace();
                     }
                 }) {

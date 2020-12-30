@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TransactionTab">
+
+    <SeekBar
+        android:id="@+id/report"
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_below="@id/report"
+            android:layout_width="200dp"
+            android:textSize="32sp"
+            android:layout_height="wrap_content"
+            android:text="From: " />
+
+        <TextView
+            android:id="@+id/to"
+            android:textSize="32sp"
+            android:layout_below="@+id/report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/from"
+            android:text="To:" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/to">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/to"
+            android:columnCount="2"
+            android:rowCount="3"
+            android:padding="13dp">
+
+            <android.support.v7.widget.CardView
+                style="@style/dashboardCards"
+                android:layout_marginRight="8dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="6dp">
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:textColor="#000"
+                    android:text="Expenses"/>
+
+                <ImageView
+                    style="@style/dashboardGridsContents"
+                    android:layout_width="154dp"
+                    android:layout_height="169dp"
+                    android:src="@drawable/expense" />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="12"
+                    android:textAlignment="textEnd"
+                    />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="Cost "
+                    android:textColor="#000"
+                    android:layout_gravity="bottom|right"
+                    />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="5000 Rwf"
+                    android:layout_gravity="bottom|right"
+                    android:textAlignment="textEnd"
+                    tools:ignore="RtlCompat" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/dashboardCards"
+                android:layout_marginRight="8dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="6dp">
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:textColor="#000"
+                    android:text="Income"/>
+
+                <ImageView
+                    style="@style/dashboardGridsContents"
+                    android:src="@drawable/balance" />
+
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:layout_width="170dp"
+                    android:text="7"
+                    android:textAlignment="textEnd" />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="Amount:"
+                    android:textColor="#000"
+                    android:layout_gravity="bottom|right"
+                    />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="10.200 Rwf"
+                    android:layout_gravity="bottom|right"
+                    android:textAlignment="textEnd"
+                    tools:ignore="RtlCompat" />
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                style="@style/dashboardCards"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp">
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:textColor="#000"
+                    android:text="Debits"/>
+                <ImageView
+                    style="@style/dashboardGridsContents"
+                    android:src="@drawable/give"/>
+
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:layout_width="170dp"
+                    android:text="7"
+                    android:textAlignment="textEnd" />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="Amount:"
+                    android:textColor="#000"
+                    android:layout_gravity="bottom|right"
+                    />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="70.000 Rwf"
+                    android:layout_gravity="bottom|right"
+                    android:textAlignment="textEnd"
+                    tools:ignore="RtlCompat" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/dashboardCards"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="6dp">
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:textColor="#000"
+                    android:text="credits"/>
+
+                <ImageView
+                    style="@style/dashboardGridsContents"
+                    android:layout_width="159dp"
+                    android:layout_height="144dp"
+                    android:src="@drawable/credit" />
+
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="7"
+                    android:textAlignment="textEnd" />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="Amount:"
+                    android:textColor="#000"
+                    android:layout_gravity="bottom|right"
+                    />
+                <TextView
+                    style="@style/dashboardGridsContents"
+                    android:text="70.000 Rwf"
+                    android:layout_gravity="bottom|right"
+                    android:textAlignment="textEnd"
+                    tools:ignore="RtlCompat" />
+
+                </android.support.v7.widget.CardView>
+
+
+        </GridLayout>
+
+    </LinearLayout>
+</RelativeLayout>

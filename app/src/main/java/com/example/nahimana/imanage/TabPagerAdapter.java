@@ -21,8 +21,8 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
         switch (position)
         {
             case 0:
-                DepositedTab depositedTab = new DepositedTab();
-                return depositedTab;
+                TransactionTab transactionTab = new TransactionTab();
+                return transactionTab;
             case 1:
                 SpentTab spentTab = new SpentTab();
                 return spentTab;

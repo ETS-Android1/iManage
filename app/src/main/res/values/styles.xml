@@ -3,6 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/nova_flat_regular</item>
+        <item name="android:textSize">18dp</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -34,10 +36,37 @@
     <style name="EditTextUserStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45dp</item>
+        <item name="lineHeight">34dp</item>
         <item name="android:layout_marginTop">16dp</item>
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingLeft">4dp</item>
         <item name="android:background">@drawable/rounded_edit_text</item>
 
+    </style>
+    <style name="ptv" parent="EditTextUserStyle">
+        <item name="android:drawableLeft">@drawable/ic_lock</item>
+    </style>
+    <style name="phoneNumberTv" parent="EditTextUserStyle">
+        <item name="android:drawableLeft">@drawable/ic_phone</item>
+    </style>
+    <style name="bottomText">
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="dashboardCards">
+        <item name="android:layout_width">185dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">128dp</item>
+
+    </style>
+    <style name="dashboardGridsContents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_marginLeft">4dp</item>
     </style>
 
 </resources>

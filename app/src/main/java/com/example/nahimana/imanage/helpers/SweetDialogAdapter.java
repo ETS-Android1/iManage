@@ -1,12 +1,23 @@
 package com.example.nahimana.imanage.helpers;
 
 import android.content.Context;
-/*
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 final public class SweetDialogAdapter {
-    public SweetAlertDialog sad;
+   public SweetAlertDialog sad;
     public Context context;
+    private static SweetDialogAdapter sda;
+
+    public SweetDialogAdapter(Context context) {
+        this.context = context;
+    }
+    public static synchronized SweetDialogAdapter getInstance(Context context){
+        if(sda == null){
+            sda = new SweetDialogAdapter(context);
+        }
+        return sda;
+    }
 
     public  void successDialog(String message, String title){
         sad = new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE);
@@ -26,6 +37,4 @@ final public class SweetDialogAdapter {
                 .setContentText(message)
                 .show();
     }
-
 }
-*/

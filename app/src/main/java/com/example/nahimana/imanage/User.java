@@ -16,8 +16,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.nahimana.imanage.helpers.ActionResponse;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.RequestHandler;
+import com.example.nahimana.imanage.helpers.SweetDialogAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +30,7 @@ import java.util.Map;
 
 public class User extends AppCompatActivity {
     private EditText username, password1, matchPassword, initAmount, mPhone, email;
-    private TextView error;
+    private TextView error, ol;
     private Button createBtn;
     RequestQueue requestQueue;
     ProgressDialog pd;
@@ -48,6 +50,14 @@ public class User extends AppCompatActivity {
         error = findViewById(R.id.errors);
         createBtn = findViewById(R.id.signUpBtn);
         error = findViewById(R.id.errors);
+        ol = findViewById(R.id.openLogin);
+        ol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+            }
+        });
+        setTitle("Track your debits, credits and expenses");
 
         requestQueue = Volley.newRequestQueue(User.this);
         pd = new ProgressDialog(User.this);
@@ -91,13 +101,19 @@ public class User extends AppCompatActivity {
                         pd.dismiss();
                         try {
                             JSONObject jo = new JSONObject(response);
-                            if(!jo.getBoolean("error")){
-                                startActivity(new Intent(getApplicationContext(), Login.class));
-                            }else {
-                                pd.setMessage(jo.getString("message"));
+                            if(jo.getBoolean("error")){
+                                // pd.setMessage(""+jo.getString("message").length());
+                                 pd.setMessage(""+jo.getString("message"));
                                 pd.setCancelable(true);
                                 pd.show();
+                            } else {
+                                startActivity(new Intent(getApplicationContext(), Login.class));
                             }
+
+
+                                //ActionResponse.getInstance(getApplicationContext()).formatMessage("Error!", jo.getString("message"),"Dummy text","Cancel");
+                                //SweetDialogAdapter.getInstance(getApplicationContext()).dangerDialog(jo.getString("message"), "Error");
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -125,6 +141,9 @@ public class User extends AppCompatActivity {
             }
         };
          RequestHandler.getInstance(this).addToRequestQueue(sr);
+
+    }
+    public void gotoLogin(){
 
     }
 
