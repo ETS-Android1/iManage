@@ -1,6 +1,7 @@
 package com.example.nahimana.imanage;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CreditActivity extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener{
     ImageView dateIcon;
@@ -67,7 +70,9 @@ public class CreditActivity extends AppCompatActivity implements  DatePickerDial
             public void onResponse(String response) {
                 try {
                     JSONObject jo = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_LONG).show();
+                    success(jo.getString("message"));
+                    //startActivity(new Intent(CreditActivity.this, MainActivity.class));
+
                 }catch (JSONException je){
                     je.printStackTrace();
                 }
@@ -115,5 +120,12 @@ public class CreditActivity extends AppCompatActivity implements  DatePickerDial
                 + "-" + da.formatDate(dayOfMonth) + " "+ da.formatDate(hour) +":"+da.formatDate(min) +":"+ da.formatDate(sec);
 
         dateText.setText(date);
+    }
+
+    public void success(String message){
+        SweetAlertDialog sweet = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
+        sweet.setContentText(message);
+        sweet.setTitle("Congratulation");
+        sweet.show();
     }
 }

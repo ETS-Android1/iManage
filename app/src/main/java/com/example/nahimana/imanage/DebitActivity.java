@@ -34,6 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CancellationException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class DebitActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     EditText dateField, debiAmount,debtorPhone,debtor;
     Button saveDebit;
@@ -71,8 +73,8 @@ public class DebitActivity extends AppCompatActivity implements DatePickerDialog
 
                 try {
                     JSONObject jo = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_LONG).show();
-
+                    //startActivity(new Intent(DebitActivity.this, MainActivity.class));
+                    success(jo.getString("message"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -123,6 +125,12 @@ public class DebitActivity extends AppCompatActivity implements DatePickerDialog
                 + "-" + formatDate(dayOfMonth) + " "+ formatDate(hour) +":"+formatDate(min) +":"+ formatDate(sec);
 
         dateField.setText(date);
+    }
+    public void success(String message){
+        SweetAlertDialog sweet = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
+        sweet.setContentText(message);
+        sweet.setTitle("Congratulation");
+        sweet.show();
     }
 
 }

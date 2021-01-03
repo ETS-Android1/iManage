@@ -1,5 +1,6 @@
 package com.example.nahimana.imanage;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -23,11 +23,14 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class ExpenseActivity extends AppCompatActivity {
     public EditText etxAmount, etxDescription;
     public Spinner spCategory;
     Button btnExpense;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class ExpenseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 storeExpense();
-                Toast.makeText(getApplicationContext(),"amount: " +"description: ",Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -69,7 +72,7 @@ public class ExpenseActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jo = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),jo.getString("message"), Toast.LENGTH_LONG).show();
+                    message(jo.getString("message"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -99,5 +102,11 @@ public class ExpenseActivity extends AppCompatActivity {
             };
         };
         RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(sr);
+    }
+    public void message(String message){
+       SweetAlertDialog sweet = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
+       sweet.setContentText(message);
+       sweet.setTitle("Well-done");
+       sweet.show();
     }
 }

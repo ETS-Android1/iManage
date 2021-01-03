@@ -59,14 +59,18 @@
         <item name="android:layout_width">185dp</item>
         <item name="android:layout_height">200dp</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="android:padding">128dp</item>
 
     </style>
     <style name="dashboardGridsContents">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+    <style name="cardImages" parent="dashboardGridsContents">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
 </resources>

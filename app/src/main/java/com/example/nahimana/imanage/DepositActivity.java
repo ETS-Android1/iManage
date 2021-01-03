@@ -22,6 +22,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class DepositActivity extends AppCompatActivity {
     Button addIt;
     @Override
@@ -53,7 +55,9 @@ public class DepositActivity extends AppCompatActivity {
 
                             try {
                                 JSONObject jo = new JSONObject(response);
-                                Toast.makeText(getApplicationContext(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                               // startActivity(new Intent(DepositActivity.this, MainActivity.class));
+                                success(jo.getString("message"));
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -86,8 +90,13 @@ public class DepositActivity extends AppCompatActivity {
                 }
             });
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-
+            e.printStackTrace();
         }
+    }
+    public void success(String message){
+        SweetAlertDialog sweet = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
+        sweet.setContentText(message);
+        sweet.setTitle("Congratulation");
+        sweet.show();
     }
 }

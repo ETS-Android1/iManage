@@ -16,10 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.nahimana.imanage.helpers.ActionResponse;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.RequestHandler;
-import com.example.nahimana.imanage.helpers.SweetDialogAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,18 +100,10 @@ public class User extends AppCompatActivity {
                         try {
                             JSONObject jo = new JSONObject(response);
                             if(jo.getBoolean("error")){
-                                // pd.setMessage(""+jo.getString("message").length());
-                                 pd.setMessage(""+jo.getString("message"));
-                                pd.setCancelable(true);
-                                pd.show();
+                                new ExpenseActivity().message(jo.getString("message"));
                             } else {
                                 startActivity(new Intent(getApplicationContext(), Login.class));
                             }
-
-
-                                //ActionResponse.getInstance(getApplicationContext()).formatMessage("Error!", jo.getString("message"),"Dummy text","Cancel");
-                                //SweetDialogAdapter.getInstance(getApplicationContext()).dangerDialog(jo.getString("message"), "Error");
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
