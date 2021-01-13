@@ -92,6 +92,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     public Filter getFilter() {
         return exampleFilter;
     }
+
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {

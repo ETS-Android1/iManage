@@ -78,7 +78,7 @@ public class SpentTab extends Fragment {
                  for(int i=0; i< response.length(); i++) {
                      JSONObject jo = response.getJSONObject(i);
                      ListExpenses le = new ListExpenses(
-                             jo.getString("id"),
+                              String.valueOf(i),
                              jo.getString("category"),
                              jo.getString("description"),
                              jo.getString("amount"),

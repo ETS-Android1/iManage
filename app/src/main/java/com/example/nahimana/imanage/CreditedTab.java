@@ -3,12 +3,18 @@ package com.example.nahimana.imanage;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,10 +43,10 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClickListener {
-    RecyclerView.Adapter adapter;
     List<ListCredits> listCredits;
     RecyclerView recyclerView;
     Context context;
+    CreditAdapter creditAdapter;
      CreditAdapter.OnCreditClickListener creditClickListener;
 
     public CreditedTab() {
@@ -62,6 +68,12 @@ public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClick
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     private void loadCreditsFromApi() {
         JsonArrayRequest credits = new JsonArrayRequest(Constants.CREDIT_URL , new Response.Listener<JSONArray>() {
             @Override
@@ -80,8 +92,8 @@ public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClick
                                 jo.getString("remainingDays")
                             );
                             listCredits.add(lc);
-                            adapter = new CreditAdapter(context, listCredits, creditClickListener);
-                            recyclerView.setAdapter(adapter);
+                            creditAdapter = new CreditAdapter(context, listCredits, creditClickListener);
+                            recyclerView.setAdapter(creditAdapter);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -106,5 +118,27 @@ public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClick
     @Override
     public void onCreditClick(ListCredits lc, String amount) {
      new Payment(getContext(), amount, lc.get_id(),"credit_id");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main,menu);
+        MenuItem mi = menu.findItem(R.id.action_search);
+        SearchView sv = (SearchView) mi.getActionView();
+        sv.setImeOptions(EditorInfo.IME_FLAG_FORCE_ASCII);
+
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                creditAdapter.getFilter().filter(newText);
+                 return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

@@ -7,23 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nahimana.imanage.R;
 import com.example.nahimana.imanage.model.ListCredits;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditViewHolder> {
+public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditViewHolder> implements Filterable {
     private Context context;
     private List<ListCredits> listCredits;
-     private OnCreditClickListener ccl;
+    private List<ListCredits> creditsFullList;
+    private OnCreditClickListener ccl;
 
     public CreditAdapter(Context context, List<ListCredits> listCredits,OnCreditClickListener ccl ) {
         this.context = context;
         this.listCredits = listCredits;
         this.ccl = ccl;
+        creditsFullList = new ArrayList<>(listCredits);
     }
 
     @NonNull
@@ -32,6 +36,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_credited_tab, viewGroup, false);
         return new CreditViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull final CreditViewHolder cvh, int index) {
         final ListCredits listCredit = listCredits.get(index);
@@ -74,7 +79,42 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
             payCreditButton = itemView.findViewById(R.id.payCreditBtn);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return creditFilter;
+    }
+
+    private Filter creditFilter =  new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ListCredits> filteredCredits = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredCredits.addAll(creditsFullList);
+            } else {
+                String filteredPattern = constraint.toString().toLowerCase().trim();
+                for (ListCredits credit : creditsFullList) {
+                    if (credit.getCreditor().toLowerCase().contains(filteredPattern)) {
+                        filteredCredits.add(credit);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredCredits;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+                listCredits.clear();
+                listCredits.addAll((List) results.values);
+                notifyDataSetChanged();
+
+        }
+    };
+
     public interface OnCreditClickListener {
         void onCreditClick(ListCredits lc, String amount);
     }
+
 }

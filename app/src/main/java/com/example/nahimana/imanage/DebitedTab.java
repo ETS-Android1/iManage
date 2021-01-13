@@ -116,9 +116,9 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
         RequestHandler.getInstance(getContext()).addToRequestQueue(jar);
     }
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflate) {
         //
-        inflater.inflate(R.menu.main, menu);
+        inflate.inflate(R.menu.main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_FLAG_FORCE_ASCII);
@@ -135,7 +135,7 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
                 return false;
             }
         });
-       super.onCreateOptionsMenu(menu, inflater);
+       super.onCreateOptionsMenu(menu, inflate);
     }
 
     @Override
