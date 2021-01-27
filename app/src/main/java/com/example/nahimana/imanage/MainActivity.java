@@ -150,7 +150,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_credit) {
             startActivity(new Intent(this, CreditActivity.class));
-        } else if (id == R.id.nav_exit) {
+        }else if(id == R.id.nav_test){
+            startActivity(new Intent(this, DebitList.class));
+        }
+
+        else if (id == R.id.nav_exit) {
             finish();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

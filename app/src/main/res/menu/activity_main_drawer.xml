@@ -30,9 +30,15 @@
                 android:icon="@drawable/ic_lend"
                 android:title="Credit" />
             <item
+                android:id="@+id/nav_test"
+                android:icon="@drawable/ic_date"
+                android:title="Lists" />
+
+            <item
                 android:id="@+id/nav_exit"
                 android:icon="@drawable/ic_close"
                 android:title="Exit" />
+
         </menu>
     </item>
 

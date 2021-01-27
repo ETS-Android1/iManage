@@ -5,12 +5,15 @@
     <color name="colorAccent">#cc9966</color>
     <color name="colorBackground">#663333</color>
     <color name="colorBk2">#cc9966</color>
+    <color name="bgWhite">#fff</color>
 
     <!--    text color -->
     <color name="colorDanger">#d9534f</color>
     <color name="colorWarning">#f4cc33</color>
     <color name="colorSuccess">#2fb390</color>
     <color name="bgLight">#ece4dc</color>
+    <color name="lightPurple">#F9EDED</color>
+    <color name="darkPurple">#F6B1B1</color>
 
 
 </resources>
