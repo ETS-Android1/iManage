@@ -26,8 +26,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
                 android:id="@+id/creditIdLabel"
+                android:visibility="gone"
                 />
             <TextView
+                android:visibility="gone"
                 android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
                 android:layout_toRightOf="@+id/creditIdLabel"
                 />
             <TextView
-                android:text="credit Names:"
+                android:text="Creditor"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
@@ -135,7 +137,7 @@
                 android:id="@+id/creditedPaymentTitle"
                 android:layout_below="@id/creditPaymentDate"
                 />
-            <include layout="@layout/hr_line"/>
+
 
             <TextView
                 android:textSize="16dp"
