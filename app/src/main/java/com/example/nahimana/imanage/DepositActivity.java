@@ -43,6 +43,7 @@ public class DepositActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     EditText amountTxt = findViewById(R.id.newMoney);
+                  final  EditText currencyTxt = findViewById(R.id.currency);
                     final String amountEtxt = amountTxt.getText().toString();
                     if(TextUtils.isEmpty(amountEtxt)){
                         amountTxt.setError("Fund can not be empty");
@@ -73,6 +74,7 @@ public class DepositActivity extends AppCompatActivity {
                         protected Map<String, String> getParams()  {
                             Map<String,String> params = new HashMap<>();
                             params.put("amount", amountEtxt);
+                            params.put("currency", currencyTxt.getText().toString());
                             params.put("user_id", SharedUserData.getInstance(getApplicationContext()).getUserId());
 
                             return params;
