@@ -10,12 +10,17 @@
     <EditText
        style="@style/DepositStyle"
         android:id="@+id/newMoney"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_edit_text"
+
         android:hint="10000"
-        android:paddingLeft="16dp"
-        android:inputType="number">
+
+        android:inputType="number" />
+
+    <EditText
+        style="@style/DepositStyle"
+        android:id="@+id/currency"
+        android:hint="Currency"
+        android:layout_below="@+id/newMoney"
+        android:inputType="textCapCharacters">
         <requestFocus />
     </EditText>
 
@@ -23,7 +28,7 @@
         android:id="@+id/saveNewMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newMoney"
+        android:layout_below="@+id/currency"
         android:layout_marginLeft="8dp"
         android:textColor="#fff"
         android:background="@drawable/rounded_button"
