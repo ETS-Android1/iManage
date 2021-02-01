@@ -49,7 +49,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.dueDate.setText(listDebit.getDueDate());
         viewHolder.paymentDate.setText(listDebit.getPaymentDate());
         viewHolder.amount.setText(listDebit.getAmount());
-        viewHolder.payedAmount.setText("Current Payment: " + listDebit.getPayedAmount());
+        viewHolder.payedAmount.setText("Paid: " + listDebit.getPayedAmount());
         viewHolder.remainingDays.setText(listDebit.getRemainingDays());
         viewHolder.cardView.setRadius(16);
         viewHolder.cardView.setClickable(true);
@@ -57,8 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
         viewHolder.payDebitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount= viewHolder.payDebitAmount.getText().toString();
-                mListener.onDebitClick(listDebit, amount);
+                mListener.onDebitClick(listDebit);
             }
         });
     }
@@ -68,7 +67,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     }
     public static class DebitViewHolder extends RecyclerView.ViewHolder{
         public TextView debitId, names, phone, dueDate, paymentDate,amount,payedAmount, remainingDays;
-        public EditText payDebitAmount;
+
         public CardView cardView;
         Button payDebitBtn;
 
@@ -83,7 +82,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
             payedAmount = itemView.findViewById(R.id.labelPaid);
             remainingDays = itemView.findViewById(R.id.remainingDayz);
             cardView = itemView.findViewById(R.id.debitedCV);
-            payDebitAmount = itemView.findViewById(R.id.payDebitAmount);
+
             payDebitBtn = itemView.findViewById(R.id.payDebitBtn);
         }
     }
@@ -121,6 +120,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.DebitV
     };
 
     public interface OnItemClickListener{
-        void onDebitClick(ListDebits liDebits, String amount);
+        void onDebitClick(ListDebits liDebits);
     }
 }

@@ -140,18 +140,10 @@
                    android:textStyle="italic"
                    />
 
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/payDebitAmount"
-                    android:layout_below="@id/remainingDayz"
-                    android:layout_marginTop="16dp"
-                    android:inputType="number"
-                    />
+
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/payDebitAmount"
                         android:textStyle="bold"
                         android:layout_below="@id/remainingDayz"
                         android:text="Pay"
