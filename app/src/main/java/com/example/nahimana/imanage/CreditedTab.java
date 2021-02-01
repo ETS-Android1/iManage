@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.CreditAdapter;
 import com.example.nahimana.imanage.helpers.Payment;
+import com.example.nahimana.imanage.helpers.PaymentAlertDialog;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
@@ -116,10 +117,9 @@ public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClick
 
     }
     @Override
-    public void onCreditClick(ListCredits lc, String amount) {
-     new Payment(getContext(), amount, lc.get_id(),"credit_id");
+    public void onCreditClick(ListCredits lc) {
+        PaymentAlertDialog.showDialog(getContext(),"credit_id",lc.get_id());
     }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main,menu);

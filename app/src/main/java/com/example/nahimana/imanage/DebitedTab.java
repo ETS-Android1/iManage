@@ -1,11 +1,14 @@
 package com.example.nahimana.imanage;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.nahimana.imanage.helpers.Constants;
 import com.example.nahimana.imanage.helpers.Payment;
+import com.example.nahimana.imanage.helpers.PaymentAlertDialog;
 import com.example.nahimana.imanage.helpers.RecyclerAdapter;
 import com.example.nahimana.imanage.helpers.RequestHandler;
 import com.example.nahimana.imanage.helpers.SharedUserData;
@@ -36,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.support.v7.app.AlertDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -139,8 +144,11 @@ public class DebitedTab extends Fragment implements RecyclerAdapter.OnItemClickL
     }
 
     @Override
-    public void onDebitClick(ListDebits liDebits, String amount) {
-       new Payment(getContext(), amount, liDebits.getId(), "debit_id");
+    public void onDebitClick(ListDebits liDebits) {
+        PaymentAlertDialog.showDialog(getContext(),"debit_id",liDebits.getId());
+
     }
+
 }
+
 

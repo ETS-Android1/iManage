@@ -46,12 +46,12 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
         cvh.creditorPhone.setText(listCredit.getCreditorPhone());
         cvh.creditDueDate.setText(listCredit.getDueDate());
         cvh.creditPaymentDate.setText(listCredit.getPaymentDate());
-        cvh.payedAmount.setText("CurrentPayment: "+listCredit.getPayedAmount());
+        cvh.payedAmount.setText("Paid: "+listCredit.getPayedAmount());
         cvh.remainingDays.setText(listCredit.getRemainingDays());
         cvh.payCreditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    ccl.onCreditClick(listCredit, cvh.payCreditAmount.getText().toString());
+                    ccl.onCreditClick(listCredit);
             }
         });
     }
@@ -62,7 +62,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
     }
 
     public class CreditViewHolder extends RecyclerView.ViewHolder {
-        public TextView creditId, creditorName, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount, remainingDays, payCreditAmount;
+        public TextView creditId, creditorName, creditorPhone, creditAmount, creditPaymentDate, creditDueDate, payedAmount, remainingDays;
         public Button payCreditButton;
 
         public CreditViewHolder(@NonNull View itemView) {
@@ -75,7 +75,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
             creditorPhone = itemView.findViewById(R.id.creditorPhone);
             payedAmount = itemView.findViewById(R.id.payedAmount);
             remainingDays = itemView.findViewById(R.id.remainingDays);
-            payCreditAmount = itemView.findViewById(R.id.payCreditAmount);
+//            payCreditAmount = itemView.findViewById(R.id.payCreditAmount);
             payCreditButton = itemView.findViewById(R.id.payCreditBtn);
         }
     }
@@ -114,7 +114,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.CreditView
     };
 
     public interface OnCreditClickListener {
-        void onCreditClick(ListCredits lc, String amount);
+        void onCreditClick(ListCredits lc);
     }
 
 }
