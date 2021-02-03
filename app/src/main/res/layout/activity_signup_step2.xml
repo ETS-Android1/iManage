@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/form"
+    tools:context=".SignupStep2">
+
+    <ImageView
+        android:id="@+id/userIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:gravity="top"
+        android:src="@drawable/login" />
+
+    <EditText
+        android:layout_below="@+id/userIcon"
+        android:id="@+id/password"
+        style="@style/EditTextUserStyle"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:layout_below="@+id/password"
+        android:id="@+id/confirmPassword"
+        style="@style/EditTextUserStyle"
+        android:hint="Confirm Password"
+        android:inputType="textPassword" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="bottom"
+        android:layout_below="@+id/confirmPassword">
+
+        <Button
+            android:id="@+id/backBtn1"
+            style="@style/signBtn"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Previous" />
+
+        <Button
+            android:id="@+id/continueBtn2"
+            style="@style/signBtn"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@+id/confirmPassword"
+            android:text="Continue" />
+
+    </LinearLayout>
+
+</RelativeLayout>

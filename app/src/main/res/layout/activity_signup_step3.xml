@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/form"
+    tools:context=".SignupStep1">
+
+    <ImageView
+        android:id="@+id/userIcon"
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_gravity="center"
+        android:src="@drawable/applause" />
+
+
+    <EditText
+        android:layout_below="@+id/userIcon"
+        android:id="@+id/userBalance"
+        style="@style/EditTextUserStyle"
+        android:hint="Amount"
+        android:inputType="number" />
+    <EditText
+        android:layout_below="@+id/userBalance"
+        android:id="@+id/userPhone"
+        style="@style/EditTextUserStyle"
+        android:hint="Phone number"
+        android:inputType="textPhonetic" />
+
+    <Button
+        android:layout_below="@+id/userPhone"
+        android:id="@+id/signUpBtn"
+        android:text="Sign up"
+        style="@style/signBtn"/>
+
+</RelativeLayout>
