@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   style="@style/form"
+    tools:context=".SignupStep1">
+
+    <ImageView
+        android:id="@+id/userIcon"
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_gravity="center"
+        android:src="@drawable/info" />
+
+
+    <EditText
+        android:layout_below="@+id/userIcon"
+        android:id="@+id/names"
+        style="@style/EditTextUserStyle"
+        android:hint="Full Names"
+        android:inputType="text|textEmailAddress" />
+    <EditText
+        android:layout_below="@+id/names"
+        android:id="@+id/userEmail"
+        style="@style/EditTextUserStyle"
+        android:hint="Email"
+        android:inputType="text|textEmailAddress" />
+        <Button
+            android:layout_below="@+id/userEmail"
+            android:id="@+id/continueBtn"
+            android:text="Continue"
+            style="@style/signBtn"/>
+</RelativeLayout>

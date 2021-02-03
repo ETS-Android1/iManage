@@ -15,7 +15,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".DebitList"></activity>
+        <activity android:name=".SignupStep3"
+            android:parentActivityName=".SignupStep2"
+            />
+        <activity android:name=".SignupStep2" />
+        <activity android:name=".SignupStep1" />
+        <activity android:name=".DebitList" />
         <activity
             android:name=".DashboardActivity"
             android:parentActivityName=".MainActivity" />

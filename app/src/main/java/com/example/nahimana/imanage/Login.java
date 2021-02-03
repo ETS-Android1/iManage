@@ -106,7 +106,8 @@ public class Login extends AppCompatActivity {
     }
     public void goToRegister(View v)
     {
-        startActivity(new Intent(this, User.class));
+//        startActivity(new Intent(this, User.class));
+        startActivity(new Intent(this, SignupStep1.class));
     }
 
 }
