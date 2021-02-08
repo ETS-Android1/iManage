@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CreditedTab">
 
@@ -13,12 +13,12 @@
         android:id="@+id/creditedCV"
         android:layout_margin="13dp"
         app:cardCornerRadius="16dp"
+
         >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:lineSpacingExtra="20dp"
+            android:layout_height="match_parent"
+            android:padding="16dp"
             >
             <TextView
                 android:text="ID:"
@@ -74,7 +74,7 @@
                 />
             <TextView
                 android:text="@string/amount"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
                 android:id="@+id/creditAmountLabel"
@@ -82,7 +82,7 @@
                 />
             <TextView
                 android:text=""
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
                 android:id="@+id/creditAmount"
@@ -105,7 +105,7 @@
                 android:layout_marginRight="4dp"
                 android:id="@+id/creditDueDate"
                 android:layout_below="@+id/creditAmount"
-                android:layout_toRightOf="@+id/creditAmountLabel"
+                android:layout_toRightOf="@+id/creditDueDateLabel"
                 />
 
             <TextView

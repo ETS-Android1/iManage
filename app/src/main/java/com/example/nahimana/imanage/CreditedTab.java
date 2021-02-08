@@ -82,6 +82,7 @@ public class CreditedTab extends Fragment implements CreditAdapter.OnCreditClick
                     try {
                         for(int i=0; i<response.length(); i++) {
                             JSONObject jo = response.getJSONObject(i);
+
                             ListCredits lc = new ListCredits(
                                 jo.getString("id"),
                                 jo.getString("creditor"),
