@@ -9,5 +9,5 @@ Signup to manage your monetory transaction
  - detailed transaction 
 ## images
 /Volumes/D/CODING_CHEETSHEET/uiUX
-![dashBoard](/Volumes/D/CODING_CHEETSHEET/uiUX/dashboard.png?raw=true "Title")
+![dashBoard](/Volumes/D/CODING_CHEETSHEET/uiUX/dashboard.PNG?raw=true "Title")
 **Happy Management**
