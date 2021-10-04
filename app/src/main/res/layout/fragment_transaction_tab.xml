@@ -105,10 +105,11 @@
                     android:textAlignment="textEnd" />
                 <TextView
                     style="@style/dashboardGridsContents"
-                    android:text="Amount:"
+
                     android:textColor="#000"
                     android:layout_gravity="bottom|right"
                     />
+
                 <TextView
                     android:id="@+id/incomeAmount"
                     style="@style/dashboardGridsContents"
@@ -138,12 +139,7 @@
                     android:text=""
                     android:textSize="16sp"
                     android:textAlignment="textEnd" />
-                <TextView
-                    style="@style/dashboardGridsContents"
-                    android:text="Amount:"
-                    android:textColor="#000"
-                    android:layout_gravity="bottom|right"
-                    />
+
                 <TextView
                     android:id="@+id/debitsAmount"
                     style="@style/dashboardGridsContents"
@@ -177,7 +173,6 @@
                     android:textAlignment="textEnd" />
                 <TextView
                     style="@style/dashboardGridsContents"
-                    android:text="Amount:"
                     android:textColor="#000"
                     android:layout_gravity="bottom|right"
 

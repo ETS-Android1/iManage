@@ -4,10 +4,10 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_dashboard"
-            android:title="Dashboard" />
+<!--        <item-->
+<!--            android:id="@+id/nav_dashboard"-->
+<!--            android:icon="@drawable/ic_dashboard"-->
+<!--            android:title="Dashboard" />-->
         <item
             android:id="@+id/nav_raise_pocket"
             android:icon="@drawable/ic_add"
@@ -29,10 +29,7 @@
                 android:id="@+id/nav_credit"
                 android:icon="@drawable/ic_lend"
                 android:title="Credit" />
-            <item
-                android:id="@+id/nav_test"
-                android:icon="@drawable/ic_date"
-                android:title="Lists" />
+
 
             <item
                 android:id="@+id/nav_exit"

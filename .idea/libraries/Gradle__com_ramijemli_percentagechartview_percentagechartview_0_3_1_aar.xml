@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/62416fc1d755025365c326d2d2cf31b0/percentagechartview-0.3.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/62416fc1d755025365c326d2d2cf31b0/percentagechartview-0.3.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/62416fc1d755025365c326d2d2cf31b0/percentagechartview-0.3.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/62416fc1d755025365c326d2d2cf31b0/percentagechartview-0.3.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/62416fc1d755025365c326d2d2cf31b0/percentagechartview-0.3.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ramijemli.percentagechartview/percentagechartview/0.3.1/214ba94536dc95e9cc3c0f557ed245c26f992bb0/percentagechartview-0.3.1-javadoc.jar!/" />

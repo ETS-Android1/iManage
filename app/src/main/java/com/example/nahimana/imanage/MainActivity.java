@@ -137,10 +137,11 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_dashboard) {
+        /*if (id == R.id.nav_dashboard) {
             startActivity(new Intent(this, DashboardActivity.class));
 
-        } else if (id == R.id.nav_raise_pocket) {
+        } */
+        if (id == R.id.nav_raise_pocket) {
             startActivity(new Intent(this, DepositActivity.class));
 
         } else if (id == R.id.nav_expense) {
@@ -150,9 +151,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_credit) {
             startActivity(new Intent(this, CreditActivity.class));
-        }else if(id == R.id.nav_test){
-            startActivity(new Intent(this, DebitList.class));
         }
+        /*else if(id == R.id.nav_test){
+            startActivity(new Intent(this, DebitList.class));
+        } */
 
         else if (id == R.id.nav_exit) {
             finish();
