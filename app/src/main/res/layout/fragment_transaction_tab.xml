@@ -64,12 +64,7 @@
                     android:textSize="16sp"
                     android:textAlignment="textEnd"
                     />
-                <TextView
-                    style="@style/dashboardGridsContents"
-                    android:text="Amount "
-                    android:textColor="#000"
-                    android:layout_gravity="bottom|right"
-                    />
+
                 <TextView
                     style="@style/dashboardGridsContents"
                     android:id="@+id/expensesAmount"
@@ -113,7 +108,7 @@
                 <TextView
                     android:id="@+id/incomeAmount"
                     style="@style/dashboardGridsContents"
-                    android:text=""
+                    android:text="80000 Rwf"
                     android:textSize="16sp"
                     android:layout_gravity="bottom|right"
                     android:textAlignment="textEnd"
